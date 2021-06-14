@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-struct HomeTableViewCellData {
+struct HomeTableViewCellViewModel {
     var temperature: String
     var cityName: String
     
-    init(data: CityWeatherData, temp: String) {
-        self.temperature = temp
+    init(data: CityWeatherData) {
+        self.temperature = data.temperature
         self.cityName = data.cityName
     }
 }
 
 class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
-    typealias CellData = HomeTableViewCellData
+    typealias CellData = HomeTableViewCellViewModel
 
     // MARK: - IBOutlet
     @IBOutlet private var tempLabel: UILabel! {
@@ -36,7 +36,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
     }
     
     // MARK: - Configure
-    func configure(with data: HomeTableViewCellData) {
+    func configure(with data: HomeTableViewCellViewModel) {
         self.tempLabel.text = data.temperature
         self.cityNameLabel.text = data.cityName
     }

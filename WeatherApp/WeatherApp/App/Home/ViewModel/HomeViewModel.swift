@@ -7,15 +7,19 @@
 
 import Foundation
 
-protocol CityWeatherData: Codable {
+protocol CityWeatherData {
     var cityId: UInt { get set }
     var cityName: String { get set }
+    var temperature: String { get set }
 }
 
 class HomeViewModel {
     // MARK: - Vars
     var storageFetcher: HomeStorageFetchable
     var dataArray = [CityWeatherData]()
+    var isNoContentHidden: Bool {
+        return !(dataArray.count == 0)
+    }
     
     // MARK: - Init
     init(storageFetcher: HomeStorageFetchable = HomeStorageFetcher()) {

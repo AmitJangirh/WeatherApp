@@ -21,7 +21,7 @@ class HomeViewControllerTests: XCTestCase {
     
     func test_tableView_withNoData_shouldShowOneRow() {
         // Setup
-        setupSUT(with: [])
+        setupSUT(with: MockStorageFetcher())
         // Actions
         let sections = homeVC.numberOfSections(in: tableView)
         let rows = homeVC.tableView(tableView, numberOfRowsInSection: 0)
@@ -30,14 +30,14 @@ class HomeViewControllerTests: XCTestCase {
         // Tests
         XCTAssertEqual(homeVC.title, "Home")
         XCTAssertEqual(sections, 1)
-        XCTAssertEqual(rows, 1)
+        XCTAssertEqual(rows, 0)
         XCTAssertFalse(noContentLabel.isHidden)
         XCTAssertEqual(noContentLabel.text, "Please Add Location")
     }
     
     func test_tableView_withData_shouldShowData() {
         // Setup
-        setupSUT(with: [])
+        setupSUT(with: MockStorageFetcher(cityWeatherData: CityWeatherStoreData.data0))
         // Actions
         let sections = homeVC.numberOfSections(in: tableView)
         let rows = homeVC.tableView(tableView, numberOfRowsInSection: 0)
@@ -47,16 +47,27 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(homeVC.title, "Home")
         XCTAssertEqual(sections, 1)
         XCTAssertEqual(rows, 1)
-        XCTAssertFalse(noContentLabel.isHidden)
-        XCTAssertEqual(noContentLabel.text, "Please Add Location")
+        XCTAssertTrue(noContentLabel.isHidden)
+    }
+    
+    func test_tableView_withData_shouldShowCellData() {
+        // Setup
+        setupSUT(with: MockStorageFetcher(cityWeatherData: CityWeatherStoreData.data0))
+        // Actions
+        let cell = createCellMirror(at: IndexPath(row: 0, section: 0))
+        let tempLabel = cell.tempLabel!
+        let cityNameLabel = cell.cityNameLabel!
+        // Tests
+        XCTAssertEqual(tempLabel.text, "32")
+        XCTAssertEqual(cityNameLabel.text, "Ateli")
     }
 }
 
 // MARK: - Utilites
 extension HomeViewControllerTests {
-    private func setupSUT(with dataArray: [Any]) {
+    private func setupSUT(with mockFetcher: HomeStorageFetchable) {
         homeVC = HomeViewController.getVC()
-        homeVC.viewModel = HomeViewModel(dataArray: dataArray)
+        homeVC.viewModel = HomeViewModel(storageFetcher: mockFetcher)
         mockNavigationVC = MockNavigationController(rootViewController: homeVC)
         homeVC.loadViewIfNeeded()
         tableView = getTableView(homeVC)
@@ -73,6 +84,7 @@ extension HomeViewControllerTests {
     }
 }
 
+// MARK: - Mirror Extension
 extension ViewControllerMirror {
     fileprivate var tableView: UITableView? { extract() }
     fileprivate var addButton: UIButton? { extract() }

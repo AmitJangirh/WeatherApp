@@ -61,7 +61,7 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     private func refreshNoContentLabel() {
-        noContentLabel.isHidden = !(viewModel.dataArray.count == 0)
+        noContentLabel.isHidden = viewModel.isNoContentHidden
         noContentLabel.text = "Please Add Location"
     }
     
@@ -99,7 +99,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
               let data = viewModel[indexPath] else {
             return UITableViewCell()
         }
-        let cellData = HomeTableViewCellData(data: data, temp: "")
+        let cellData = HomeTableViewCellViewModel(data: data)
         cell.configure(with: cellData)
         return cell
     }

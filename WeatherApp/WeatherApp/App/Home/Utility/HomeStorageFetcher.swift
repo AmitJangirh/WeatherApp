@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct CityWeatherStoreData: CityWeatherData {
+struct CityWeatherStoreData: CityWeatherData, Codable {
     var cityId: UInt
     var cityName: String
+    var temperature: String
 }
 
 protocol HomeStorageFetchable {

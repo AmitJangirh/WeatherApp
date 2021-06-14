@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; };
+		FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
 		FDE61BE52677292500EABDD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE42677292500EABDD4 /* ViewController.swift */; };
@@ -34,7 +36,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FD7DAC6226772B9D00D05D24 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDE61BE22677292500EABDD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD7DAC5E26772B9D00D05D24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FDE61BD42677292500EABDD4 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +109,7 @@
 				FDE61BF62677292600EABDD4 /* WeatherAppTests */,
 				FDE61C012677292600EABDD4 /* WeatherAppUITests */,
 				FDE61BDE2677292500EABDD4 /* Products */,
+				FD7DAC5E26772B9D00D05D24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +190,7 @@
 				FDE61BD92677292500EABDD4 /* Sources */,
 				FDE61BDA2677292500EABDD4 /* Frameworks */,
 				FDE61BDB2677292500EABDD4 /* Resources */,
+				FD7DAC6226772B9D00D05D24 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

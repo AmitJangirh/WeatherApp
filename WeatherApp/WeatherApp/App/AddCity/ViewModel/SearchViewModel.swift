@@ -41,19 +41,16 @@ class SearchViewModel {
     private var allData = [SearchCityData]()
     private var filteredArray = [SearchCityData]()
     private var searchWorkItem: DispatchWorkItem?
+    private var jsonEncoder: FileJsonEncoder.Type
 
-    init(allData: [SearchCityData] = []) {
+    init(allData: [SearchCityData] = [], jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
         self.allData = []
+        self.jsonEncoder = jsonEncoder
     }
     
     func loadData() {
-        guard let filePath = Bundle.main.path(forResource: Constant.fileName, ofType: "json") else {
-            return
-        }
         do {
-            let url = URL(fileURLWithPath: filePath)
-            let data = try Data(contentsOf: url, options: .alwaysMapped)
-            self.allData = try JSONDecoder().decode([SearchCityData].self, from: data)
+            self.allData = try jsonEncoder.jsonDecode(jsonFile: .cityList, modelType: [SearchCityData].self)
         } catch {
             Logger.log(object: "Failed to load local data json content with error, \(error)")
         }

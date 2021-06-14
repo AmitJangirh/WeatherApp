@@ -93,14 +93,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="np2-Nv-waE">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="np2-Nv-waE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RBH-so-mG7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="np2-Nv-waE" firstAttribute="leading" secondItem="RBH-so-mG7" secondAttribute="leading" id="HaQ-gA-E44"/>
+                            <constraint firstItem="np2-Nv-waE" firstAttribute="top" secondItem="RBH-so-mG7" secondAttribute="top" id="bZb-4F-ygq"/>
                             <constraint firstItem="np2-Nv-waE" firstAttribute="trailing" secondItem="RBH-so-mG7" secondAttribute="trailing" id="qKh-sL-e0X"/>
                             <constraint firstAttribute="bottom" secondItem="np2-Nv-waE" secondAttribute="bottom" id="sXl-vx-n0N"/>
                         </constraints>

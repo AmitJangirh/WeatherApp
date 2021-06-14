@@ -41,11 +41,8 @@ class HomeViewController: UIViewController, StoryboardGettable {
     private func setupViewController() {
         self.title = Constant.title
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
         self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
         self.navigationController?.navigationBar.backgroundColor = Theme.Color.greyColor
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
     
     private func setupTableView() {

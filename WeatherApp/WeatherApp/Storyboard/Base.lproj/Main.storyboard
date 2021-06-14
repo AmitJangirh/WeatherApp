@@ -41,6 +41,12 @@
                                     <outlet property="delegate" destination="6U0-TF-ezn" id="9lI-gq-acg"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Content" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pje-nq-qc8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSm-8Z-XWN">
                                 <rect key="frame" x="299" y="767" width="45" height="45"/>
                                 <constraints>
@@ -59,6 +65,10 @@
                             <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="GSm-8Z-XWN" secondAttribute="trailing" constant="70" id="98k-dI-orz"/>
                             <constraint firstAttribute="bottom" secondItem="Nfz-qx-TLI" secondAttribute="bottom" id="JWE-cU-1ko"/>
                             <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="Nfz-qx-TLI" secondAttribute="trailing" id="LSx-5E-UrG"/>
+                            <constraint firstItem="pje-nq-qc8" firstAttribute="top" secondItem="rBp-nf-3GZ" secondAttribute="top" id="YeS-8v-hGr"/>
+                            <constraint firstItem="pje-nq-qc8" firstAttribute="leading" secondItem="rBp-nf-3GZ" secondAttribute="leading" id="gio-wu-clW"/>
+                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="pje-nq-qc8" secondAttribute="trailing" id="gld-Ns-dyA"/>
+                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="bottom" secondItem="pje-nq-qc8" secondAttribute="bottom" id="l4u-Ut-TWS"/>
                             <constraint firstItem="Nfz-qx-TLI" firstAttribute="leading" secondItem="rBp-nf-3GZ" secondAttribute="leading" id="tTe-jz-yAC"/>
                             <constraint firstItem="Nfz-qx-TLI" firstAttribute="top" secondItem="rBp-nf-3GZ" secondAttribute="top" id="veX-8H-Kmb"/>
                             <constraint firstItem="rBp-nf-3GZ" firstAttribute="bottom" secondItem="GSm-8Z-XWN" secondAttribute="bottom" constant="50" id="x7P-UJ-9tj"/>
@@ -67,6 +77,7 @@
                     <navigationItem key="navigationItem" id="LWR-bG-Bxc"/>
                     <connections>
                         <outlet property="addButton" destination="GSm-8Z-XWN" id="eTI-gr-4zz"/>
+                        <outlet property="noContentLabel" destination="pje-nq-qc8" id="0dc-tR-3WQ"/>
                         <outlet property="tableView" destination="Nfz-qx-TLI" id="Uwl-KF-yio"/>
                     </connections>
                 </viewController>

@@ -26,4 +26,9 @@ struct Theme {
             return UIColor.red
         }
     }
+    struct Font {
+        static var largeFont32: UIFont {
+            UIFont.systemFont(ofSize: 32)
+        }
+    }
 }

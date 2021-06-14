@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, StoryboardGettable {
     // MARK: - Constant
     struct Constant {
         static let title = "Home"
@@ -16,8 +16,9 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - IBOutlets
-    @IBOutlet private var addButton: UIButton!
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var addButton: UIButton!
+    @IBOutlet private var noContentLabel: UILabel!
     
     // MARK: - Vars
     var viewModel = HomeViewModel()
@@ -26,12 +27,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        refreshData()
+        fetchData()
     }
     
     private func setup() {
         setupViewController()
         setupTableView()
         setupAddButton()
+        refreshNoContentLabel()
     }
     
     private func setupViewController() {
@@ -49,29 +53,54 @@ class HomeViewController: UIViewController {
         tableView.estimatedRowHeight = Constant.rowHeight
         tableView.rowHeight = Constant.rowHeight
         tableView.tableFooterView = UIView()
+        HomeTableViewCell.register(for: tableView)
     }
     
     private func setupAddButton() {
         addButton.setTitle(Constant.addButtonTitle, for: .normal)
     }
     
+    private func refreshNoContentLabel() {
+        noContentLabel.isHidden = !(viewModel.dataArray.count == 0)
+        noContentLabel.text = "Please Add Location"
+    }
+    
+    private func refreshData() {
+        DispatchQueue.main.async {
+            self.refreshNoContentLabel()
+            self.tableView.reloadData()
+        }
+    }
+    
+    // MARK: - Fetch Data
+    private func fetchData() {
+        viewModel.fetchData()
+        refreshData()
+        
+    }
+    
     // MARK: - IBAction
     @IBAction func addButtonAction(sender: UIButton) {
-        
+        // Open Map View to add new location
     }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return viewModel.sectionCount()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        return viewModel.rowsCount(for: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = HomeTableViewCell.dequeueCell(for: tableView, indexPath: indexPath),
+              let data = viewModel[indexPath] else {
+            return UITableViewCell()
+        }
+        let cellData = HomeTableViewCellData(data: data, temp: "")
+        cell.configure(with: cellData)
         return cell
     }
     

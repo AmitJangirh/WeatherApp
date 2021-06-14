@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WeatherAPI
 
 protocol CityWeatherData {
     var cityId: UInt { get set }
@@ -13,24 +14,44 @@ protocol CityWeatherData {
     var temperature: String { get set }
 }
 
+struct HomeWeatherData {
+    var storeData: CityWeatherData?
+    var apiData: WeatherData?
+}
+
+extension HomeWeatherData {
+    var temperature: String {
+        let temp = self.apiData?.main?.temp ?? 0.0
+        return "\(temp)" + String(format: "23%@", "\u{00B0}")
+    }
+}
+
 class HomeViewModel {
     // MARK: - Vars
     var storageFetcher: HomeStorageFetchable
-    var dataArray = [CityWeatherData]()
+    var apiFetcher: HomeAPIFetchable
+    var dataArray = [HomeWeatherData]()
     var isNoContentHidden: Bool {
         return !(dataArray.count == 0)
     }
     
     // MARK: - Init
-    init(storageFetcher: HomeStorageFetchable = HomeStorageFetcher()) {
+    init(storageFetcher: HomeStorageFetchable = HomeStorageFetcher(),
+         apiFetcher: HomeAPIFetchable = HomeAPIFetcher()) {
         self.storageFetcher = storageFetcher
+        self.apiFetcher = apiFetcher
     }
     
     // MARK: - Func
-    func fetchData() {
-        self.dataArray = storageFetcher.cityWeatherData ?? []
+    func fetchData(completion: @escaping () -> Void) {
+        let storeData = storageFetcher.cityWeatherData ?? []
+        self.dataArray = storeData.map({ HomeWeatherData(storeData: $0, apiData: nil)})
+        self.apiFetcher.fetchWeather(for: self.dataArray) { (weatherDataArray, weatherAPIError) in
+            self.dataArray = weatherDataArray ?? []
+            completion()
+        }
     }
-    
+
     func sectionCount() -> Int {
         return 1
     }
@@ -39,7 +60,7 @@ class HomeViewModel {
         return dataArray.count
     }
     
-    subscript(indexPath: IndexPath) -> CityWeatherData? {
+    subscript(indexPath: IndexPath) -> HomeWeatherData? {
         self.dataArray[indexPath.row]
     }
 }

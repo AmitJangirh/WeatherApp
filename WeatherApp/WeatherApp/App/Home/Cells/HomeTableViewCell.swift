@@ -25,13 +25,13 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
     @IBOutlet private var tempLabel: UILabel! {
         didSet {
             self.tempLabel.font = Theme.Font.largeFont32
-            self.tempLabel.textColor = Theme.Color.tintColor
+            self.tempLabel.textColor = Theme.Color.greyColor
         }
     }
     @IBOutlet private var cityNameLabel: UILabel! {
         didSet {
             self.cityNameLabel.font = Theme.Font.largeFont32
-            self.cityNameLabel.textColor = Theme.Color.tintColor
+            self.cityNameLabel.textColor = Theme.Color.greyColor
         }
     }
     

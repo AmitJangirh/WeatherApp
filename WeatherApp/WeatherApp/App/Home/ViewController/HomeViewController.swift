@@ -70,17 +70,15 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     private func refreshData() {
-        DispatchQueue.main.async {
-            self.refreshNoContentLabel()
-            self.tableView.reloadData()
-        }
+        self.refreshNoContentLabel()
+        self.tableView.reloadData()
     }
     
     // MARK: - Fetch Data
     private func fetchData() {
-        viewModel.fetchData()
-        refreshData()
-        
+        viewModel.fetchData(completion: {
+            self.refreshData()
+        })
     }
     
     // MARK: - IBAction
@@ -100,11 +98,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = HomeTableViewCell.dequeueCell(for: tableView, indexPath: indexPath),
-              let data = viewModel[indexPath] else {
+              let storeData = viewModel[indexPath]?.storeData else {
             return UITableViewCell()
         }
-        let cellData = HomeTableViewCellViewModel(data: data)
-        cell.configure(with: cellData)
+        cell.configure(with: HomeTableViewCellViewModel(data: storeData))
         return cell
     }
     

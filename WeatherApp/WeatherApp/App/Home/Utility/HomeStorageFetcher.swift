@@ -31,7 +31,7 @@ class HomeStorageFetcher {
 extension HomeStorageFetcher: HomeStorageFetchable {
     var cityWeatherData: [CityWeatherStoreData]? {
         get {
-            store.getValue(for: StoreKey.cityWeatherData.rawValue)
+            return store.getValue(for: StoreKey.cityWeatherData.rawValue)
         }
         set {
             if let data = newValue {

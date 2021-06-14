@@ -31,6 +31,7 @@
 		FDE73F1526779D8B00692CE7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F1426779D8B00692CE7 /* Logger.swift */; };
 		FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F1826779FF000692CE7 /* StoreDataInteractor.swift */; };
 		FDE73F342677B5C500692CE7 /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F332677B5C500692CE7 /* MockFetcher.swift */; };
+		FDE73F382677C22900692CE7 /* HomeAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		FDE73F1426779D8B00692CE7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FDE73F1826779FF000692CE7 /* StoreDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataInteractor.swift; sourceTree = "<group>"; };
 		FDE73F332677B5C500692CE7 /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
+		FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7DAC9326774AB100D05D24 /* HomeStorageFetcher.swift */,
+				FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			files = (
 				FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */,
 				FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */,
+				FDE73F382677C22900692CE7 /* HomeAPIFetcher.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,

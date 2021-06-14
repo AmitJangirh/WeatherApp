@@ -11,9 +11,13 @@
 		FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD7DAC6826772BFD00D05D24 /* WeatherAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */; };
 		FD7DAC6926772BFD00D05D24 /* WeatherAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC7626772D3F00D05D24 /* HomeViewModel.swift */; };
+		FD7DAC7926772D3F00D05D24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC7726772D3F00D05D24 /* HomeViewController.swift */; };
+		FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC7F26772FB300D05D24 /* StoryboardGettable.swift */; };
+		FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC8026772FB300D05D24 /* TableCellRegisterable.swift */; };
+		FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC8126772FB300D05D24 /* Theme.swift */; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
-		FDE61BE52677292500EABDD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE42677292500EABDD4 /* ViewController.swift */; };
 		FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDE61BE62677292500EABDD4 /* Main.storyboard */; };
 		FDE61BED2677292600EABDD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDE61BEB2677292600EABDD4 /* LaunchScreen.storyboard */; };
 		FDE61BF82677292600EABDD4 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BF72677292600EABDD4 /* WeatherAppTests.swift */; };
@@ -56,10 +60,14 @@
 /* Begin PBXFileReference section */
 		FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeatherAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD7DAC7626772D3F00D05D24 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FD7DAC7726772D3F00D05D24 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FD7DAC7F26772FB300D05D24 /* StoryboardGettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardGettable.swift; sourceTree = "<group>"; };
+		FD7DAC8026772FB300D05D24 /* TableCellRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellRegisterable.swift; sourceTree = "<group>"; };
+		FD7DAC8126772FB300D05D24 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDE61BE22677292500EABDD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FDE61BE42677292500EABDD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FDE61BE72677292500EABDD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDE61BEC2677292600EABDD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDE61BEE2677292600EABDD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +116,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD7DAC7426772D3F00D05D24 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FD7DAC7526772D3F00D05D24 /* Home */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FD7DAC7526772D3F00D05D24 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FD7DAC7626772D3F00D05D24 /* HomeViewModel.swift */,
+				FD7DAC7726772D3F00D05D24 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FD7DAC7E26772FB300D05D24 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FD7DAC7F26772FB300D05D24 /* StoryboardGettable.swift */,
+				FD7DAC8026772FB300D05D24 /* TableCellRegisterable.swift */,
+				FD7DAC8126772FB300D05D24 /* Theme.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		FDE61BD42677292500EABDD4 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				FDE61C352677299200EABDD4 /* AppDelegate */,
-				FDE61BE42677292500EABDD4 /* ViewController.swift */,
+				FD7DAC7426772D3F00D05D24 /* App */,
+				FD7DAC7E26772FB300D05D24 /* Utility */,
 				FDE61C3A2677299F00EABDD4 /* Storyboard */,
 				FDE61C44267729CF00EABDD4 /* Resources */,
 				FDE61BEE2677292600EABDD4 /* Info.plist */,
@@ -317,9 +353,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDE61BE52677292500EABDD4 /* ViewController.swift in Sources */,
 				FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */,
+				FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */,
+				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
+				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
 				FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */,
+				FD7DAC7926772D3F00D05D24 /* HomeViewController.swift in Sources */,
+				FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

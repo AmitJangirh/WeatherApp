@@ -84,6 +84,8 @@ class HomeViewController: UIViewController, StoryboardGettable {
     // MARK: - IBAction
     @IBAction func addButtonAction(sender: UIButton) {
         // Open Map View to add new location
+        let addVC = AddCityViewController.getVC()
+        self.navigationController?.show(addVC, sender: self)
     }
 }
 

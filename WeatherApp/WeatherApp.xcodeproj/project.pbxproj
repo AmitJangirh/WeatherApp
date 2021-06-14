@@ -21,6 +21,9 @@
 		FD7DAC9426774AB100D05D24 /* HomeStorageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC9326774AB100D05D24 /* HomeStorageFetcher.swift */; };
 		FD7DACE72677652100D05D24 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DACE62677652100D05D24 /* HomeTableViewCell.swift */; };
 		FD7DACEB2677653200D05D24 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */; };
+		FDC161A82677D83400F36C8B /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161A72677D83400F36C8B /* SearchCityViewController.swift */; };
+		FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */; };
+		FDC161B02677DADA00F36C8B /* City_List.json in Resources */ = {isa = PBXBuildFile; fileRef = FDC161AF2677DADA00F36C8B /* City_List.json */; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
 		FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDE61BE62677292500EABDD4 /* Main.storyboard */; };
@@ -32,6 +35,8 @@
 		FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F1826779FF000692CE7 /* StoreDataInteractor.swift */; };
 		FDE73F342677B5C500692CE7 /* MockFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F332677B5C500692CE7 /* MockFetcher.swift */; };
 		FDE73F382677C22900692CE7 /* HomeAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */; };
+		FDE73F422677D30400692CE7 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F412677D30400692CE7 /* AddCityViewController.swift */; };
+		FDE73F502677D33400692CE7 /* AddCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE73F4F2677D33400692CE7 /* AddCityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,9 @@
 		FD7DAC9326774AB100D05D24 /* HomeStorageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStorageFetcher.swift; sourceTree = "<group>"; };
 		FD7DACE62677652100D05D24 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		FDC161A72677D83400F36C8B /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
+		FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		FDC161AF2677DADA00F36C8B /* City_List.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = City_List.json; sourceTree = "<group>"; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDE61BE22677292500EABDD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,8 @@
 		FDE73F1826779FF000692CE7 /* StoreDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataInteractor.swift; sourceTree = "<group>"; };
 		FDE73F332677B5C500692CE7 /* MockFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetcher.swift; sourceTree = "<group>"; };
 		FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIFetcher.swift; sourceTree = "<group>"; };
+		FDE73F412677D30400692CE7 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		FDE73F4F2677D33400692CE7 /* AddCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7DAC7526772D3F00D05D24 /* Home */,
+				FDE73F452677D30900692CE7 /* AddCity */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -180,6 +191,14 @@
 				FD7DAC8F26773D1A00D05D24 /* MockNavigationController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		FDC161B32677DAE000F36C8B /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				FDC161AF2677DADA00F36C8B /* City_List.json */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 		FDE61BD42677292500EABDD4 = {
@@ -257,6 +276,7 @@
 		FDE61C44267729CF00EABDD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FDC161B32677DAE000F36C8B /* Json */,
 				FDE61C45267729CF00EABDD4 /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -303,6 +323,33 @@
 				FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FDE73F452677D30900692CE7 /* AddCity */ = {
+			isa = PBXGroup;
+			children = (
+				FDE73F532677D33A00692CE7 /* ViewModel */,
+				FDE73F4C2677D31D00692CE7 /* ViewController */,
+			);
+			path = AddCity;
+			sourceTree = "<group>";
+		};
+		FDE73F4C2677D31D00692CE7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FDE73F412677D30400692CE7 /* AddCityViewController.swift */,
+				FDC161A72677D83400F36C8B /* SearchCityViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FDE73F532677D33A00692CE7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FDE73F4F2677D33400692CE7 /* AddCityViewModel.swift */,
+				FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +459,7 @@
 				FDE61BED2677292600EABDD4 /* LaunchScreen.storyboard in Resources */,
 				FDE61C46267729CF00EABDD4 /* Assets.xcassets in Resources */,
 				FD7DACEB2677653200D05D24 /* HomeTableViewCell.xib in Resources */,
+				FDC161B02677DADA00F36C8B /* City_List.json in Resources */,
 				FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,16 +487,20 @@
 			files = (
 				FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */,
 				FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */,
+				FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */,
 				FDE73F382677C22900692CE7 /* HomeAPIFetcher.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
+				FDC161A82677D83400F36C8B /* SearchCityViewController.swift in Sources */,
 				FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */,
 				FDE73F1526779D8B00692CE7 /* Logger.swift in Sources */,
 				FD7DAC9426774AB100D05D24 /* HomeStorageFetcher.swift in Sources */,
+				FDE73F422677D30400692CE7 /* AddCityViewController.swift in Sources */,
 				FD7DACE72677652100D05D24 /* HomeTableViewCell.swift in Sources */,
 				FD7DAC7926772D3F00D05D24 /* HomeViewController.swift in Sources */,
 				FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */,
+				FDE73F502677D33400692CE7 /* AddCityViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

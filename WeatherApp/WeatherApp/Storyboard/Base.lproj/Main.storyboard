@@ -85,6 +85,72 @@
             </objects>
             <point key="canvasLocation" x="23" y="9"/>
         </scene>
+        <!--Add City View Controller-->
+        <scene sceneID="bSM-pe-fHL">
+            <objects>
+                <viewController storyboardIdentifier="AddCityViewController" id="u4d-MX-odT" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l4r-rh-boq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="np2-Nv-waE">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RBH-so-mG7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="np2-Nv-waE" firstAttribute="leading" secondItem="RBH-so-mG7" secondAttribute="leading" id="HaQ-gA-E44"/>
+                            <constraint firstItem="np2-Nv-waE" firstAttribute="trailing" secondItem="RBH-so-mG7" secondAttribute="trailing" id="qKh-sL-e0X"/>
+                            <constraint firstAttribute="bottom" secondItem="np2-Nv-waE" secondAttribute="bottom" id="sXl-vx-n0N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="np2-Nv-waE" id="2fq-CC-5xK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLR-CZ-SfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953.62318840579712" y="12.723214285714285"/>
+        </scene>
+        <!--Search City View Controller-->
+        <scene sceneID="PTm-ba-gZA">
+            <objects>
+                <viewController storyboardIdentifier="SearchCityViewController" id="LXu-I6-GU3" customClass="SearchCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I5M-7y-ipb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kY6-TF-NXr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zfa-OD-chO">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FST-er-r74"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kY6-TF-NXr" firstAttribute="top" secondItem="FST-er-r74" secondAttribute="top" id="873-b0-4ma"/>
+                            <constraint firstItem="kY6-TF-NXr" firstAttribute="trailing" secondItem="FST-er-r74" secondAttribute="trailing" id="8g5-ID-OMD"/>
+                            <constraint firstItem="Zfa-OD-chO" firstAttribute="top" secondItem="kY6-TF-NXr" secondAttribute="bottom" id="LTx-LO-D91"/>
+                            <constraint firstItem="FST-er-r74" firstAttribute="trailing" secondItem="Zfa-OD-chO" secondAttribute="trailing" id="OEm-1D-ole"/>
+                            <constraint firstItem="Zfa-OD-chO" firstAttribute="leading" secondItem="FST-er-r74" secondAttribute="leading" id="X9j-eI-6sg"/>
+                            <constraint firstAttribute="bottom" secondItem="Zfa-OD-chO" secondAttribute="bottom" id="idr-7P-sEL"/>
+                            <constraint firstItem="kY6-TF-NXr" firstAttribute="leading" secondItem="FST-er-r74" secondAttribute="leading" id="uF4-GP-5sU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="kY6-TF-NXr" id="PDt-nv-NaS"/>
+                        <outlet property="tableView" destination="Zfa-OD-chO" id="ct4-yB-dFb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zuZ-5k-LFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="120"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

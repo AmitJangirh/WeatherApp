@@ -25,10 +25,16 @@ struct Theme {
         static var redColor: UIColor {
             return UIColor.red
         }
+        static var darkColor: UIColor {
+            return UIColor.black
+        }
     }
     struct Font {
         static var largeFont32: UIFont {
             UIFont.systemFont(ofSize: 32)
+        }
+        static var mediumFont18: UIFont {
+            UIFont.systemFont(ofSize: 18)
         }
     }
 }

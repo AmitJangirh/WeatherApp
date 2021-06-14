@@ -28,7 +28,7 @@
         <!--Home View Controller-->
         <scene sceneID="oe3-Rp-6J4">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="6U0-TF-ezn" customClass="HomeViewController" customModule="Weather_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="6U0-TF-ezn" customClass="HomeViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W6r-cF-Rr2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

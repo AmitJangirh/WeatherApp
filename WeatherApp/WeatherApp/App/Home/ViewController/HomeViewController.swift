@@ -58,6 +58,10 @@ class HomeViewController: UIViewController, StoryboardGettable {
     
     private func setupAddButton() {
         addButton.setTitle(Constant.addButtonTitle, for: .normal)
+        addButton.layer.cornerRadius = addButton.bounds.height/2
+        addButton.backgroundColor = Theme.Color.greyColor
+        addButton.setTitleColor(Theme.Color.tintColor, for: .normal)
+        addButton.titleLabel?.font = Theme.Font.largeFont32
     }
     
     private func refreshNoContentLabel() {

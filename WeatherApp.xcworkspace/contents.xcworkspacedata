@@ -5,6 +5,9 @@
       location = "group:WeatherApp/WeatherApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:WeatherAPI/WeatherAPI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NetworkConnection/NetworkConnection.xcodeproj">
    </FileRef>
 </Workspace>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; };
 		FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD7DAC6826772BFD00D05D24 /* WeatherAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */; };
+		FD7DAC6926772BFD00D05D24 /* WeatherAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
 		FDE61BE52677292500EABDD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE42677292500EABDD4 /* ViewController.swift */; };
@@ -43,6 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FD7DAC6926772BFD00D05D24 /* WeatherAPI.framework in Embed Frameworks */,
 				FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -52,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeatherAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDE61BE22677292500EABDD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7DAC6826772BFD00D05D24 /* WeatherAPI.framework in Frameworks */,
 				FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +102,7 @@
 		FD7DAC5E26772B9D00D05D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */,
 				FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */,
 			);
 			name = Frameworks;

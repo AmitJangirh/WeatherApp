@@ -8,11 +8,6 @@
 import Foundation
 
 public class NetworkConnection {
-    // MARK: - Constants
-    struct Constants {
-        static let ConnectionSerialQueue = "NetworkConnection_SerialQueue"
-    }
-    
     // MARK: - Singleton
     /// Shared Instace to Network Module
     private static let sharedInstance = NetworkConnection()

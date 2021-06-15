@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CityWeatherStoreData: CityWeatherData, Codable {
+struct CityWeatherStoreData: Codable {
     var cityId: UInt
     var cityName: String
     var temperature: String

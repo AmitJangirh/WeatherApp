@@ -9,39 +9,47 @@ import Foundation
 import WeatherAPI
 
 protocol HomeAPIFetchable {
-    func fetchWeather(for cities: [HomeWeatherData], completion: @escaping ([HomeWeatherData]?, WeatherAPIError?) -> Void)
+    func fetchWeather(for cities: [CityWeatherStoreData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void)
 }
 
 class HomeAPIFetcher: HomeAPIFetchable {
     let apiInterface: WeatherAPIInterface
     let dispacthGroup = DispatchGroup()
+    // Updater
+    var weatherDataArray: [WeatherData]?
+    var error: WeatherAPIError?
     
     init(apiInterface: WeatherAPIInterface = weatherAPI) {
         self.apiInterface = apiInterface
     }
     
-    func fetchWeather(for cities: [HomeWeatherData], completion: @escaping ([HomeWeatherData]?, WeatherAPIError?) -> Void) {
-        var homeData = cities
-        var error: WeatherAPIError?
-        for city in homeData {
+    func fetchWeather(for cities: [CityWeatherStoreData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void) {
+        // Reset data
+        self.weatherDataArray = []
+        self.error = nil
+        // Fetching in loop
+        for city in cities {
             dispacthGroup.enter()
-            guard let cityId =  city.storeData?.cityId else {
-                dispacthGroup.leave()
-                return
-            }
-            apiInterface.currentWeather(for: cityId) { (result: Result<WeatherData, WeatherAPIError>) in
+            let cityId = city.cityId
+            self.fetchWeather(for: cityId) { (result: Result<WeatherData, WeatherAPIError>) in
                 switch result {
                 case .success(let weatherData):
-                    //city.apiData = weatherData
+                    self.weatherDataArray?.append(weatherData)
                     print(cityId)
                 case .failure(let weatherAPIError):
-                    error = weatherAPIError
+                    self.error = weatherAPIError
                 }
                 self.dispacthGroup.leave()
             }
         }
         self.dispacthGroup.notify(queue: DispatchQueue.main) {
-            completion(homeData, error)
+            completion(self.weatherDataArray, self.error)
+        }
+    }
+
+    func fetchWeather(for cityId: UInt, completion: @escaping (Result<WeatherData, WeatherAPIError>) -> Void) {
+        apiInterface.currentWeather(for: cityId) { (result: Result<WeatherData, WeatherAPIError>) in
+            completion(result)
         }
     }
 }

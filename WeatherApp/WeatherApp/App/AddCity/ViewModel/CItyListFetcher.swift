@@ -41,12 +41,18 @@ class CityListFetcher {
         case cityListData = "CityListFetcher_AllCities"
     }
     
-    private let store: StoreDataInterface
+    //private let store: StoreDataInterface
     private let jsonEncoder: FileJsonEncoder.Type
     
-    init(store: StoreDataInterface = CacheStorageInteractor(),
-         jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
-        self.store = store
+    // NOTE: Was using CacheStorage for all city list
+    // but it is getting evicted, so can using global vars
+//    init(store: StoreDataInterface = CacheStorageInteractor(),
+//         jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
+//        self.store = store
+//        self.jsonEncoder = jsonEncoder
+//    }
+    
+    init(jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
         self.jsonEncoder = jsonEncoder
     }
 }
@@ -71,18 +77,38 @@ extension CityListFetcher: CityListFetchable {
     }
 }
 
+// not using cache store
+//extension CityListFetcher {
+//    // getter
+//    var cityListData: [SearchCityData]? {
+//        get {
+//            return store.getValue(for: StoreKey.cityListData.rawValue)
+//        }
+//        set {
+//            if let data = newValue {
+//                store.saveValue(data, key: StoreKey.cityListData.rawValue)
+//            } else {
+//                store.removeValue(for: StoreKey.cityListData.rawValue)
+//            }
+//        }
+//    }
+//}
+
+// Using Gloabal Dict
+var globarDictionary: [String: Any] = [:]
 extension CityListFetcher {
     // getter
     var cityListData: [SearchCityData]? {
         get {
-            return store.getValue(for: StoreKey.cityListData.rawValue)
+            return globarDictionary[StoreKey.cityListData.rawValue] as? [SearchCityData]
         }
         set {
             if let data = newValue {
-                store.saveValue(data, key: StoreKey.cityListData.rawValue)
+                globarDictionary[StoreKey.cityListData.rawValue] = data
             } else {
-                store.removeValue(for: StoreKey.cityListData.rawValue)
+                globarDictionary.removeValue(forKey: StoreKey.cityListData.rawValue)
             }
         }
     }
 }
+

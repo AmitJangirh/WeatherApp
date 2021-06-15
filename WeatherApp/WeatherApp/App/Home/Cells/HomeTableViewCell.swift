@@ -11,11 +11,6 @@ import UIKit
 struct HomeTableViewCellViewModel {
     var temperature: String
     var cityName: String
-    
-    init(data: CityWeatherData) {
-        self.temperature = data.temperature
-        self.cityName = data.cityName
-    }
 }
 
 class HomeTableViewCell: UITableViewCell, TableCellAdaptable {

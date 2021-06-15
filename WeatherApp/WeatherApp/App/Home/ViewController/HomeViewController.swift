@@ -82,7 +82,18 @@ class HomeViewController: UIViewController, StoryboardGettable {
     @IBAction func addButtonAction(sender: UIButton) {
         // Open Map View to add new location
         let addVC = AddCityViewController.getVC()
+        addVC.delegate = self
         self.navigationController?.show(addVC, sender: self)
+    }
+}
+
+extension HomeViewController: AddCityViewControllerDelegate {
+    func addCity(cityData: SelectedCityData) {
+        viewModel.addCity(newCity: cityData) { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -96,11 +107,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = HomeTableViewCell.dequeueCell(for: tableView, indexPath: indexPath),
-              let storeData = viewModel[indexPath]?.storeData else {
+        guard let cell = HomeTableViewCell.dequeueCell(for: tableView, indexPath: indexPath) else {
             return UITableViewCell()
         }
-        cell.configure(with: HomeTableViewCellViewModel(data: storeData))
+        let storeData = viewModel[indexPath]
+        cell.configure(with: storeData)
         return cell
     }
     

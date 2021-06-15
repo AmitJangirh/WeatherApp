@@ -24,11 +24,14 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     // MARK: - Constant
     struct Constant {
         static let title = "Add City"
+        static let confirmButtonTitle = "Confirm"
+        static let confirmButtonCornerRadius: CGFloat = 10
         static let currentLocationIdentifier = "MapView_CurrentLocation_Identifier"
     }
     
     // MARK: - IBOutlets
     @IBOutlet private var mapView: MKMapView!
+    @IBOutlet private var confirmButton: UIButton!
 
     // MARK: - Vars
     var viewModel = AddCityViewModel()
@@ -44,6 +47,7 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     private func setup() {
         setupViewController()
         setupMapView()
+        setupConfirmButton()
     }
     
     private func setupViewController() {
@@ -61,6 +65,14 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     private func setupMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
+    }
+    
+    private func setupConfirmButton() {
+        confirmButton.setTitle(Constant.confirmButtonTitle, for: .normal)
+        confirmButton.layer.cornerRadius = Constant.confirmButtonCornerRadius
+        confirmButton.backgroundColor = Theme.Color.greyColor
+        confirmButton.setTitleColor(Theme.Color.tintColor, for: .normal)
+        confirmButton.titleLabel?.font = Theme.Font.mediumFont22
     }
     
     private func fetchUserLocation() {
@@ -94,11 +106,12 @@ class AddCityViewController: UIViewController, StoryboardGettable {
         mapView.addAnnotation(pinAnnotaion)
     }
     
-    private func didConfirmLocation() {
+    @IBAction private func didConfirmLocation() {
         guard let selectedCity = viewModel.selectedCity else {
             return
         }
         self.delegate?.addCity(cityData: selectedCity)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

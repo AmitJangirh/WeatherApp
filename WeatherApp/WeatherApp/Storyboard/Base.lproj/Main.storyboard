@@ -96,17 +96,31 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="np2-Nv-waE">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-QD-PAo">
+                                <rect key="frame" x="16" y="802" width="382" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="F1F-Xn-CzI"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didConfirmLocation" destination="u4d-MX-odT" eventType="touchUpInside" id="lrU-k1-AtA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RBH-so-mG7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="np2-Nv-waE" firstAttribute="leading" secondItem="RBH-so-mG7" secondAttribute="leading" id="HaQ-gA-E44"/>
+                            <constraint firstItem="RBH-so-mG7" firstAttribute="trailing" secondItem="ofu-QD-PAo" secondAttribute="trailing" constant="16" id="Ucw-vR-RrX"/>
+                            <constraint firstItem="RBH-so-mG7" firstAttribute="bottom" secondItem="ofu-QD-PAo" secondAttribute="bottom" constant="16" id="aNz-pV-CQD"/>
                             <constraint firstItem="np2-Nv-waE" firstAttribute="top" secondItem="RBH-so-mG7" secondAttribute="top" id="bZb-4F-ygq"/>
                             <constraint firstItem="np2-Nv-waE" firstAttribute="trailing" secondItem="RBH-so-mG7" secondAttribute="trailing" id="qKh-sL-e0X"/>
                             <constraint firstAttribute="bottom" secondItem="np2-Nv-waE" secondAttribute="bottom" id="sXl-vx-n0N"/>
+                            <constraint firstItem="ofu-QD-PAo" firstAttribute="leading" secondItem="RBH-so-mG7" secondAttribute="leading" constant="16" id="uj8-5z-GsW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="ofu-QD-PAo" id="gox-59-3fl"/>
                         <outlet property="mapView" destination="np2-Nv-waE" id="2fq-CC-5xK"/>
                     </connections>
                 </viewController>

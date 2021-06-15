@@ -8,31 +8,16 @@
 import Foundation
 import WeatherAPI
 
-protocol CityWeatherData {
-    var cityId: UInt { get set }
-    var cityName: String { get set }
-    var temperature: String { get set }
-}
-
-struct HomeWeatherData {
-    var storeData: CityWeatherData?
-    var apiData: WeatherData?
-}
-
-extension HomeWeatherData {
-    var temperature: String {
-        let temp = self.apiData?.main?.temp ?? 0.0
-        return "\(temp)" + String(format: "23%@", "\u{00B0}")
-    }
-}
-
 class HomeViewModel {
     // MARK: - Vars
     var storageFetcher: HomeStorageFetchable
     var apiFetcher: HomeAPIFetchable
-    var dataArray = [HomeWeatherData]()
+    // Data Array
+    var storeWeatherArray = [CityWeatherStoreData]()
+    var apiWeatherArray = [WeatherData]()
+    
     var isNoContentHidden: Bool {
-        return !(dataArray.count == 0)
+        return !(storeWeatherArray.count == 0)
     }
     
     // MARK: - Init
@@ -44,12 +29,29 @@ class HomeViewModel {
     
     // MARK: - Func
     func fetchData(completion: @escaping () -> Void) {
-        let storeData = storageFetcher.cityWeatherData ?? []
-        self.dataArray = storeData.map({ HomeWeatherData(storeData: $0, apiData: nil)})
-        self.apiFetcher.fetchWeather(for: self.dataArray) { (weatherDataArray, weatherAPIError) in
-            self.dataArray = weatherDataArray ?? []
+        self.storeWeatherArray = storageFetcher.cityWeatherData ?? []
+        updateWeather(completion: completion)
+    }
+    
+    private func updateWeather(completion: @escaping () -> Void) {
+        self.apiFetcher.fetchWeather(for: self.storeWeatherArray) { (weatherDataArray, weatherAPIError) in
+            self.apiWeatherArray = weatherDataArray ?? []
             completion()
         }
+    }
+    
+    func addCity(newCity: SelectedCityData, completion: @escaping () -> Void) {
+        var storeData = self.storageFetcher.cityWeatherData ?? []
+        let existingCities = storeData.filter({ $0.cityName == newCity.cityName })
+        if existingCities.count > 0 {
+            // Show alert
+            return
+        }
+        let city = CityWeatherStoreData(cityId: newCity.cityId, cityName: newCity.cityName, temperature: "")
+        storeData.append(city)
+        self.storageFetcher.cityWeatherData = storeData
+        // Update weather
+        updateWeather(completion: completion)
     }
 
     func sectionCount() -> Int {
@@ -57,10 +59,14 @@ class HomeViewModel {
     }
     
     func rowsCount(for section: Int) -> Int {
-        return dataArray.count
+        return storeWeatherArray.count
     }
     
-    subscript(indexPath: IndexPath) -> HomeWeatherData? {
-        self.dataArray[indexPath.row]
+    subscript(indexPath: IndexPath) -> HomeTableViewCellViewModel {
+        let storeData = self.storeWeatherArray[indexPath.row]
+        let apiData = apiWeatherArray.first(where: { $0.name == storeData.cityName })
+        let temperature = "\(apiData?.main?.temp)" + String(format: "23%@", "\u{00B0}")
+        return HomeTableViewCellViewModel(temperature: temperature,
+                                                       cityName: storeData.cityName)
     }
 }

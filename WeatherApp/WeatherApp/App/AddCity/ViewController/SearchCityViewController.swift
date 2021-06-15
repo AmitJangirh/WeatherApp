@@ -30,7 +30,16 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
     // MARK: - IBOutlets
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var searchBar: UISearchBar!
-    
+    lazy private var loadingView: UIView = {
+        let baseView = UIView(frame: self.view.bounds)
+        baseView.backgroundColor = Theme.Color.dimBackgroundColor
+        let activityView = UIActivityIndicatorView(frame: baseView.bounds)
+        activityView.startAnimating()
+        baseView.addSubview(activityView)
+        self.view.addSubview(baseView)
+        return baseView
+    }()
+
     // MARK: Var
     var viewModel = SearchViewModel()
     weak var delegate: SearchCityViewControllerDelegate?
@@ -94,9 +103,15 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
     }
     
     private func loadData() {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.viewModel.loadData()
+        self.setShowLoading(show: true)
+        viewModel.loadData { [weak self] in
+            self?.setShowLoading(show: false)
         }
+    }
+    
+    private func setShowLoading(show: Bool) {
+        loadingView.frame = self.view.frame
+        loadingView.isHidden = !show
     }
 }
 

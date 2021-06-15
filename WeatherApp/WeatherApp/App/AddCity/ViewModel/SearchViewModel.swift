@@ -7,31 +7,6 @@
 
 import Foundation
 
-struct SearchCityData: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case cityId = "id"
-        case cityName = "name"
-        case coordinates = "coord"
-        case state, country
-    }
-    
-    var cityId: UInt
-    var cityName: String
-    var state: String
-    var country: String
-    var coordinates: Coordinates
-}
-
-struct Coordinates: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case latitude = "lat"
-        case longitude = "lon"
-    }
-    
-    var latitude: Double
-    var longitude: Double
-}
-
 class SearchViewModel {
     struct Constant {
         static let fileName = "City_List"
@@ -41,17 +16,20 @@ class SearchViewModel {
     private var allData = [SearchCityData]()
     private var filteredArray = [SearchCityData]()
     private var searchWorkItem: DispatchWorkItem?
-    private var jsonEncoder: FileJsonEncoder.Type
+    private let cityListFetcher: CityListFetchable
 
-    init(jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
-        self.jsonEncoder = jsonEncoder
+    init(cityListFetcher: CityListFetcher = CityListFetcher()) {
+        self.cityListFetcher = cityListFetcher
     }
     
-    func loadData() {
-        do {
-            self.allData = try jsonEncoder.jsonDecode(jsonFile: .cityList, modelType: [SearchCityData].self)
-        } catch {
-            Logger.log(object: "Failed to load local data json content with error, \(error)")
+    func loadData(completion: @escaping () -> Void) {
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.cityListFetcher.fetchCityList { [weak self] (allCities) in
+                self?.allData = allCities ?? []
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
         }
     }
     

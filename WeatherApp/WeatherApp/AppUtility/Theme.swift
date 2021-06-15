@@ -28,6 +28,9 @@ struct Theme {
         static var darkColor: UIColor {
             return UIColor.black
         }
+        static var dimBackgroundColor: UIColor {
+            return UIColor(white: 0.1, alpha: 0.3)
+        }
     }
     struct Font {
         static var largeFont32: UIFont {

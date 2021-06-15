@@ -23,7 +23,6 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     // MARK: - IBOutlets
     @IBOutlet private var mapView: MKMapView!
     private var dropAnnotationView: MKAnnotationView?
-    var locationManager = CLLocationManager()
 
     // MARK: - Vars
     var viewModel = AddCityViewModel()
@@ -41,9 +40,10 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     
     private func setupViewController() {
         self.title = Constant.title
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
         self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
         self.navigationController?.navigationBar.backgroundColor = Theme.Color.greyColor
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
+        self.navigationController?.navigationBar.tintColor = Theme.Color.tintColor
         // Setup right bar button icon
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                                  target: self,
@@ -53,12 +53,11 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     private func loadMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.locationManager.delegate = self;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
+        // Fetch location
+        viewModel.fetchLocation { [weak self] (latitude, longitude) in
+            DispatchQueue.main.async {
+                self?.loadMap(with: latitude, lon: longitude)
+            }
         }
     }
     
@@ -79,15 +78,6 @@ class AddCityViewController: UIViewController, StoryboardGettable {
         let pinAnnotaion = MKPointAnnotation();
         pinAnnotaion.coordinate = coordinates2D
         mapView.addAnnotation(pinAnnotaion)
-    }
-}
-
-extension AddCityViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let firstLocation = locations.first?.coordinate else {
-            return
-        }
-        loadMap(with: firstLocation.latitude, lon: firstLocation.longitude)
     }
 }
 

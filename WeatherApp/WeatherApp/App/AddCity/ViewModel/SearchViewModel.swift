@@ -19,10 +19,10 @@ struct SearchCityData: Decodable {
     var cityName: String
     var state: String
     var country: String
-    var coordinates: SearchCityDataCoordinates
+    var coordinates: Coordinates
 }
 
-struct SearchCityDataCoordinates: Decodable {
+struct Coordinates: Decodable {
     enum CodingKeys: String, CodingKey {
         case latitude = "lat"
         case longitude = "lon"
@@ -43,8 +43,7 @@ class SearchViewModel {
     private var searchWorkItem: DispatchWorkItem?
     private var jsonEncoder: FileJsonEncoder.Type
 
-    init(allData: [SearchCityData] = [], jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
-        self.allData = []
+    init(jsonEncoder: FileJsonEncoder.Type = FileParser.self) {
         self.jsonEncoder = jsonEncoder
     }
     

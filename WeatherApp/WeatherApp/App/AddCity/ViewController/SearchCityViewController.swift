@@ -50,9 +50,12 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
     
     private func setupViewController() {
         self.title = Constant.title
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
         self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
         self.navigationController?.navigationBar.backgroundColor = Theme.Color.greyColor
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
+        self.navigationController?.navigationBar.tintColor = Theme.Color.tintColor
+        // Drop Shadow
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // Setup right bar button icon
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,

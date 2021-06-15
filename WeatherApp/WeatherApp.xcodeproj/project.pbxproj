@@ -25,6 +25,7 @@
 		FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */; };
 		FDC161B02677DADA00F36C8B /* City_List.json in Resources */ = {isa = PBXBuildFile; fileRef = FDC161AF2677DADA00F36C8B /* City_List.json */; };
 		FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161B62677EADE00F36C8B /* FileParser.swift */; };
+		FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161D226786C5300F36C8B /* LocationFetcher.swift */; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
 		FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDE61BE62677292500EABDD4 /* Main.storyboard */; };
@@ -89,6 +90,7 @@
 		FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FDC161AF2677DADA00F36C8B /* City_List.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = City_List.json; sourceTree = "<group>"; };
 		FDC161B62677EADE00F36C8B /* FileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
+		FDC161D226786C5300F36C8B /* LocationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDE61BE22677292500EABDD4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				FD7DAC8126772FB300D05D24 /* Theme.swift */,
 				FDE73F1426779D8B00692CE7 /* Logger.swift */,
 				FDC161B62677EADE00F36C8B /* FileParser.swift */,
+				FDC161D226786C5300F36C8B /* LocationFetcher.swift */,
 			);
 			path = AppUtility;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
 				FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */,
+				FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */,
 				FDC161A82677D83400F36C8B /* SearchCityViewController.swift in Sources */,
 				FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */,
 				FDE73F1526779D8B00692CE7 /* Logger.swift in Sources */,

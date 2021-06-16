@@ -45,5 +45,8 @@ struct Theme {
         static var mediumFont18: UIFont {
             UIFont.systemFont(ofSize: 18)
         }
+        static var smallFont15: UIFont {
+            UIFont.systemFont(ofSize: 15)
+        }
     }
 }

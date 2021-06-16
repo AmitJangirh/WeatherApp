@@ -24,7 +24,7 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
     struct Constant {
         static let title = "Search City"
         static let cellIdentifier = "SearchTableViewCellIdentifier"
-        static let rowHeight: CGFloat = 44
+        static let rowHeight: CGFloat = 64
     }
     
     // MARK: - IBOutlets
@@ -39,6 +39,11 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
         self.view.addSubview(baseView)
         return baseView
     }()
+    var cancelBatItem: UIBarButtonItem {
+        UIBarButtonItem(barButtonSystemItem: .cancel,
+                        target: self,
+                        action: #selector(cancelIconDidPress))
+    }
 
     // MARK: Var
     var viewModel = SearchViewModel()
@@ -64,9 +69,7 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // Setup right bar button icon
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                                 target: self,
-                                                                 action: #selector(cancelIconDidPress))
+        self.navigationItem.rightBarButtonItem = cancelBatItem
     }
     
     private func setupTableView() {
@@ -76,7 +79,7 @@ class SearchCityViewController: UIViewController, StoryboardGettable {
         tableView.estimatedRowHeight = Constant.rowHeight
         tableView.rowHeight = Constant.rowHeight
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constant.cellIdentifier)
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constant.cellIdentifier)
     }
     
     private func setupSearchBar() {
@@ -136,13 +139,16 @@ extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cellIdentifier,
-                                                       for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: Constant.cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: Constant.cellIdentifier)
+        }
         let searchData = viewModel[indexPath]
-        cell.textLabel?.text = searchData?.cityName
-        cell.textLabel?.textColor = Theme.Color.darkColor
-        cell.textLabel?.font = Theme.Font.mediumFont18
-        return cell
+        cell?.textLabel?.text = searchData.cityName
+        cell?.textLabel?.textColor = Theme.Color.darkColor
+        cell?.textLabel?.font = Theme.Font.mediumFont18
+        cell?.detailTextLabel?.text = searchData.subText
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -150,9 +156,7 @@ extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let searchData = viewModel[indexPath] else {
-            return
-        }
+        let searchData = viewModel[indexPath]
         struct SelectedCity: SelectedCityData {
             var cityName: String
             var cityId: UInt

@@ -65,7 +65,20 @@ class SearchViewModel {
         return filteredArray.count
     }
     
-    subscript(indexPath: IndexPath) -> SearchCityData? {
+    subscript(indexPath: IndexPath) -> SearchCityData {
         self.filteredArray[indexPath.row]
+    }
+}
+
+extension SearchCityData {
+    var subText: String {
+        var subText = ""
+        if state.count > 0 {
+            subText += state + ", "
+        }
+        if country.count > 0 {
+            subText += country
+        }
+        return subText
     }
 }

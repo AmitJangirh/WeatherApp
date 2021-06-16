@@ -33,14 +33,22 @@ extension StoreDataInterface {
     }
 }
 
+/// Uses UserDefault
 public var userDefaultStorage: StoreDataInterface {
     UserDefaultStorage()
 }
 
+/// Uses NSCache
 public var cacheStorage: StoreDataInterface {
     CacheStorage()
 }
 
+/// Uses FileManager to write data in Document directory
 public var persistanceStorage: StoreDataInterface {
     PersistanceStorage()
+}
+
+/// Its a global dictionary which will be available till application is live.
+public var memStorage: StoreDataInterface {
+    MemoryStorage()
 }

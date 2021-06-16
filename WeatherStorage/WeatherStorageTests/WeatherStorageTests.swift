@@ -22,12 +22,14 @@ class WeatherStorageTests: XCTestCase {
         userDefaultStorage.removeValue(for: storekey)
         cacheStorage.removeValue(for: storekey)
         persistanceStorage.removeValue(for: storekey)
+        memStorage.removeValue(for: storekey)
     }
     
     override func tearDownWithError() throws {
         userDefaultStorage.removeValue(for: storekey)
         cacheStorage.removeValue(for: storekey)
         persistanceStorage.removeValue(for: storekey)
+        memStorage.removeValue(for: storekey)
     }
     
     func test_userDefault_saveValue_readValue_deleteValue() throws {
@@ -102,6 +104,32 @@ class WeatherStorageTests: XCTestCase {
     func test_persistanceStorage_withExpiry_saveValue_readValue_deleteValue() throws {
         let expiryDate = Date().adding(minutes: -10)
         let sut = persistanceStorage
+        // Existing should be nil
+        let existingValue = sut.getValue(for: storekey, of: UserDefaultData.self)
+        XCTAssertNil(existingValue)
+        // Save value
+        sut.saveValue(data, key: storekey, expiryDate: expiryDate)
+        // Read value
+        let savedValue = sut.getValue(for: storekey, of: UserDefaultData.self)
+        XCTAssertNil(savedValue)
+    }
+    
+    func test_memStorage_withNoExpiry_saveValue_readValue_deleteValue() throws {
+        let expiryDate = Date().adding(minutes: 10)
+        let sut = memStorage
+        // Existing should be nil
+        let existingValue = sut.getValue(for: storekey, of: UserDefaultData.self)
+        XCTAssertNil(existingValue)
+        // Save value
+        sut.saveValue(data, key: storekey, expiryDate: expiryDate)
+        // Read value
+        let savedValue = sut.getValue(for: storekey, of: UserDefaultData.self)
+        XCTAssertEqual(savedValue, data)
+    }
+    
+    func test_memStorage_withExpiry_saveValue_readValue_deleteValue() throws {
+        let expiryDate = Date().adding(minutes: -10)
+        let sut = memStorage
         // Existing should be nil
         let existingValue = sut.getValue(for: storekey, of: UserDefaultData.self)
         XCTAssertNil(existingValue)

@@ -43,14 +43,14 @@ class AddCityViewModel {
                                        cityId: 0,
                                        latitude: latitude,
                                        longitude: longitude)
-                self.fetchCity(for: city, completion: completion)
+                self.fetchMatchingCity(for: city, completion: completion)
                 return
             }
             completion(nil)
         }
     }
     
-    private func fetchCity(for city: AddCityData, completion: @escaping (AddCityData?) -> Void) {
+    private func fetchMatchingCity(for city: AddCityData, completion: @escaping (AddCityData?) -> Void) {
         // Update city ID from stored list if available
         self.cityListFether.fetchCityList { (searchCityData) in
             var forCity = city

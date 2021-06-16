@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct WeatherData: Decodable {
+public struct WeatherData: Codable {
     enum CodingKeys: String, CodingKey {
         case coordinates = "coord"
         case weather, base, main, visibility, wind, dt, sys, timezone, name
@@ -49,7 +49,7 @@ public struct WeatherData: Decodable {
     //var cod: String?
 }
 
-public struct LocationCoordinates: Decodable {
+public struct LocationCoordinates: Codable {
     /// longitude
     public var lat: Double?
     
@@ -57,7 +57,7 @@ public struct LocationCoordinates: Decodable {
     public var lon: Double?
 }
 
-public struct Weather: Decodable {
+public struct Weather: Codable {
     /// Weather condition id
     public var id: Int?
     
@@ -71,7 +71,7 @@ public struct Weather: Decodable {
     public var icon: String?
 }
 
-public struct Main: Decodable {
+public struct Main: Codable {
     enum CodingKeys: String, CodingKey {
         case minTemperature = "temp_min"
         case maxTemperature = "temp_max"

@@ -17,25 +17,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATELI" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-gD-zeG">
-                        <rect key="frame" x="16" y="16" width="591" height="100"/>
+                        <rect key="frame" x="16" y="16" width="591" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="eWZ-mz-EQa"/>
+                            <constraint firstAttribute="height" constant="60" id="eWZ-mz-EQa"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hIF-XO-YhS">
-                        <rect key="frame" x="16" y="132" width="591" height="114"/>
+                        <rect key="frame" x="16" y="92" width="591" height="154"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37 C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6y-2F-IdM">
-                                <rect key="frame" x="0.0" y="0.0" width="36" height="47.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="64.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2E-ty-lNz">
-                                <rect key="frame" x="0.0" y="55.5" width="41.5" height="58.5"/>
+                                <rect key="frame" x="0.0" y="72.5" width="41.5" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

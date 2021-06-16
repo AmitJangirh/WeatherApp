@@ -10,8 +10,8 @@ import Foundation
 struct WeatherAPI: WeatherAPIInterface {
     func currentWeather(for cityId: UInt,
                         completion: @escaping (Result<WeatherData, WeatherAPIError>) -> Void) {
-        WeatherService.getWeatherData(with: cityId,
-                                      completion: completion)
+        WeatherRepository.getWeatherData(with: cityId,
+                                         completion: completion)
     }
     
     func currentWeather(for location: Location,
@@ -24,20 +24,20 @@ struct WeatherAPI: WeatherAPIInterface {
         if let coutryCode = location.coutryCode {
             queryString += ",\(coutryCode)"
         }
-        WeatherService.getWeatherData(with: queryString,
-                                      completion: completion)
+        WeatherRepository.getWeatherData(with: queryString,
+                                         completion: completion)
     }
     
     func currentWeather(for coardinates: Coordinates,
                         completion: @escaping (Result<WeatherData, WeatherAPIError>) -> Void) {
-        WeatherService.getWeatherData(withLat: coardinates.latitude,
-                                      lon: coardinates.logitude,
-                                      completion: completion)
+        WeatherRepository.getWeatherData(withLat: coardinates.latitude,
+                                         lon: coardinates.logitude,
+                                         completion: completion)
     }
     
     func currentWeather(with zipCode: String,
                         countryCode: String,
                         completion: @escaping (Result<WeatherData, WeatherAPIError>) -> Void) {
-        WeatherService.getWeatherData(with: zipCode, countryCode: countryCode, completion: completion)
+        WeatherRepository.getWeatherData(with: zipCode, countryCode: countryCode, completion: completion)
     }
 }

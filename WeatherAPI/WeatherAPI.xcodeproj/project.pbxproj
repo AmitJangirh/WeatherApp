@@ -25,6 +25,8 @@
 		FD81F0FD2675EBFC00E1CE16 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD81F0FC2675EBFC00E1CE16 /* WeatherRequest.swift */; };
 		FDD6EA1126764C2800EAA4A7 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6EA1026764C2800EAA4A7 /* MockData.swift */; };
 		FDF0F1362679D903001A4BDA /* WeatherStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF0F1352679D903001A4BDA /* WeatherStorage.framework */; };
+		FDF0F1462679FFB7001A4BDA /* ExpiryDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F1452679FFB7001A4BDA /* ExpiryDataHandler.swift */; };
+		FDF0F14A267A0537001A4BDA /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F149267A0537001A4BDA /* WeatherRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		FD81F0FC2675EBFC00E1CE16 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		FDD6EA1026764C2800EAA4A7 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FDF0F1352679D903001A4BDA /* WeatherStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeatherStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDF0F1452679FFB7001A4BDA /* ExpiryDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryDataHandler.swift; sourceTree = "<group>"; };
+		FDF0F149267A0537001A4BDA /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				FD727C4E2674E13300137237 /* WeatherAPI.h */,
 				FD727C94267510DA00137237 /* WeatherAPIInterface.swift */,
 				FD81F0F82675ABD200E1CE16 /* WeatherAPI.swift */,
+				FDF0F149267A0537001A4BDA /* WeatherRepository.swift */,
 				FD81F0D52675A1AE00E1CE16 /* WeatherAPIError.swift */,
 				FD81F0FC2675EBFC00E1CE16 /* WeatherRequest.swift */,
 				FD29ABE02676380E00D40BFC /* WeatherData.swift */,
@@ -145,6 +150,7 @@
 			children = (
 				FD727C7E2675058800137237 /* Configuration.swift */,
 				FD727C7A2675055300137237 /* WeatherService.swift */,
+				FDF0F1452679FFB7001A4BDA /* ExpiryDataHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -279,8 +285,10 @@
 				FD81F0D62675A1AE00E1CE16 /* WeatherAPIError.swift in Sources */,
 				FD727C772675051D00137237 /* Logger.swift in Sources */,
 				FD727C95267510DA00137237 /* WeatherAPIInterface.swift in Sources */,
+				FDF0F1462679FFB7001A4BDA /* ExpiryDataHandler.swift in Sources */,
 				FD727C7F2675058800137237 /* Configuration.swift in Sources */,
 				FD727C8926750AC700137237 /* NetworkExtension.swift in Sources */,
+				FDF0F14A267A0537001A4BDA /* WeatherRepository.swift in Sources */,
 				FD81F0F92675ABD200E1CE16 /* WeatherAPI.swift in Sources */,
 				FD29ABE12676380E00D40BFC /* WeatherData.swift in Sources */,
 				FD81F0FD2675EBFC00E1CE16 /* WeatherRequest.swift in Sources */,

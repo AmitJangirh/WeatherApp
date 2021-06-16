@@ -23,7 +23,7 @@ class SearchViewModel {
     }
     
     func loadData(completion: @escaping () -> Void) {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.cityListFetcher.fetchCityList { [weak self] (allCities) in
                 self?.allData = allCities ?? []
                 DispatchQueue.main.async {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FileValue: ExpirableValue, Codable {
+struct FileValue: ExpirableValue, Codable {
     var value: Data
     var expiryDate: Date?
     

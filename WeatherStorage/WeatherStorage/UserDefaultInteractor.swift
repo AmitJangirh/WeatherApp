@@ -22,7 +22,7 @@ class UserDefaultInteractor: StoreDataInterface {
         }
     }
     
-    func saveValue<T: Codable>(_ value: T, key: String) {
+    func saveValue<T: Codable>(_ value: T, key: String, expiryDate: Date?) {
         do {
             let encodedValue = try JSONEncoder().encode(value)
             store.set(encodedValue, forKey: key)

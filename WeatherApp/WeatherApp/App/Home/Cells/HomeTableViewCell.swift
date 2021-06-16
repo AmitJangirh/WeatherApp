@@ -19,7 +19,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
     // MARK: - IBOutlet
     @IBOutlet private var cityNameLabel: UILabel! {
         didSet {
-            self.cityNameLabel.font = Theme.Font.largeFont32
+            self.cityNameLabel.font = Theme.Font.boldLargeFont32
             self.cityNameLabel.textColor = Theme.Color.greyColor
         }
     }

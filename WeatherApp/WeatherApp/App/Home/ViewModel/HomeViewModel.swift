@@ -72,6 +72,9 @@ class HomeViewModel {
     
     func deleteItem(at indexPath: IndexPath, completion: @escaping () -> Void) {
         self.storeWeatherArray.remove(at: indexPath.row)
+        // Update in Store
+        self.storageFetcher.cityWeatherData = self.storeWeatherArray
+        // Call API to fetch new data
         updateWeather(completion: completion)
     }
 }

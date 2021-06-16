@@ -10,4 +10,7 @@
    <FileRef
       location = "group:NetworkConnection/NetworkConnection.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:WeatherStorage/WeatherStorage.xcodeproj">
+   </FileRef>
 </Workspace>

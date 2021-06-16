@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WeatherStorage
 
 struct CityWeatherStoreData: Codable {
     var cityId: UInt
@@ -23,7 +24,7 @@ class HomeStorageFetcher {
     }
     
     let store: StoreDataInterface
-    init(store: StoreDataInterface = UserDefaultInteractor()) {
+    init(store: StoreDataInterface = userDefaultStorage) {
         self.store = store
     }
 }

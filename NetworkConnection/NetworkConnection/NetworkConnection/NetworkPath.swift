@@ -47,7 +47,7 @@ extension NetworkPath {
         }
         return urlComponents.url
     }
-    var path: String? {
+    public var path: String? {
         return url?.absoluteString
    }
 }

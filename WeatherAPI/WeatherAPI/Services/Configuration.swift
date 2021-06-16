@@ -23,18 +23,23 @@ extension Enviornment {
     var domain: String {
         "http://api.openweathermap.org/data"
     }
+    var imageDomain: String {
+        "http://api.openweathermap.org/img/wn/"
+    }
 }
 
 struct Configuration {
     let version = "2.5"
     let appAPIkey: String!
     let domain: String!
+    let imageDomain: String!
     private let enviornment: Enviornment
 
     init(enviornment: Enviornment) {
         self.enviornment = enviornment
         self.appAPIkey = enviornment.appAPIkey
         self.domain = enviornment.domain
+        self.imageDomain = enviornment.imageDomain
     }
 }
 

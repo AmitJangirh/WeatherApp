@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WeatherStorage
 
 class WeatherRepository {
     static func getWeatherData(with query: String,
@@ -78,6 +79,24 @@ class WeatherRepository {
                 completion(.failure(weatherAPIError))
             }
         }
+    }
+    
+    static func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void) {
+        let imageURL = Configuration.current.imageDomain + "\(icon)@2x.png"
+        if let imageData = cacheStorage.getValue(for: imageURL, of: Data.self) {
+            completion(.success(imageData))
+            return
+        }
+        guard let url = URL(string: imageURL) else {
+            completion(.failure(WeatherAPIError.invalidObject))
+            return
+        }
+        if let data = try? Data(contentsOf: url) {
+            cacheStorage.saveValue(data, key: imageURL)
+            completion(.success(data))
+            return
+        }
+        completion(.failure(.invalidObject))
     }
 }
 

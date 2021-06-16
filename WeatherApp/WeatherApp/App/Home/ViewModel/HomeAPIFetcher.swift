@@ -9,7 +9,7 @@ import Foundation
 import WeatherAPI
 
 protocol HomeAPIFetchable {
-    func fetchWeather(for cities: [HomeData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void)
+    func fetchWeather(for cities: [CityWeatherStoreData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void)
 }
 
 class HomeAPIFetcher: HomeAPIFetchable {
@@ -23,14 +23,14 @@ class HomeAPIFetcher: HomeAPIFetchable {
         self.apiInterface = apiInterface
     }
     
-    func fetchWeather(for cities: [HomeData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void) {
+    func fetchWeather(for cities: [CityWeatherStoreData], completion: @escaping ([WeatherData]?, WeatherAPIError?) -> Void) {
         // Reset data
         self.weatherDataArray = []
         self.error = nil
         // Fetching in loop
         for city in cities {
             dispacthGroup.enter()
-            let cityId = city.storeData.cityId
+            let cityId = city.cityId
             self.fetchWeather(for: cityId ?? 0) { (result: Result<WeatherData, WeatherAPIError>) in
                 switch result {
                 case .success(let weatherData):

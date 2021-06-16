@@ -43,6 +43,7 @@
 		FDF0F1322679D8FC001A4BDA /* WeatherStorage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FDF0F1302679D8FB001A4BDA /* WeatherStorage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDF0F170267A3C5D001A4BDA /* HomeAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F16E267A3C5D001A4BDA /* HomeAPIFetcher.swift */; };
 		FDF0F171267A3C5D001A4BDA /* HomeStorageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F16F267A3C5D001A4BDA /* HomeStorageFetcher.swift */; };
+		FDF0F175267A51BF001A4BDA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		FDF0F1302679D8FB001A4BDA /* WeatherStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeatherStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF0F16E267A3C5D001A4BDA /* HomeAPIFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAPIFetcher.swift; sourceTree = "<group>"; };
 		FDF0F16F267A3C5D001A4BDA /* HomeStorageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStorageFetcher.swift; sourceTree = "<group>"; };
+		FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				FDC161D226786C5300F36C8B /* LocationFetcher.swift */,
 				FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */,
 				FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */,
+				FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */,
 			);
 			path = AppUtility;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			files = (
 				FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */,
 				FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */,
+				FDF0F175267A51BF001A4BDA /* UIImageExtension.swift in Sources */,
 				FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,

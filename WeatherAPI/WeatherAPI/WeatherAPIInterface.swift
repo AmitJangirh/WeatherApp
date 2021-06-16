@@ -36,6 +36,12 @@ public protocol WeatherAPIInterface {
     ///   - countryCode: Country Code
     ///   - completion: Provides reponse json object is success, else error
     func currentWeather(with zipCode: String, countryCode: String, completion: @escaping (Result<WeatherData, WeatherAPIError>) -> Void)
+    
+    /// Download the data for provide Icon. Use cache system to store the data.
+    /// - Parameters:
+    ///   - icon: Icon name : Weather.icon
+    ///   - completion: Data object
+    func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void)
 }
 
 /// Globar getter to get the Interface instance. By which one have access to all the APIs

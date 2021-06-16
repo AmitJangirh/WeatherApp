@@ -12,7 +12,7 @@ struct HomeTableViewCellViewModel {
     var temperature: String
     var cityName: String
     var decription: String
-    var iconURL: String?
+    var iconName: String?
 }
 
 class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
@@ -45,5 +45,10 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         self.tempLabel.text = data.temperature
         self.cityNameLabel.text = data.cityName
         self.descriptionLabel.text = data.decription
+        if let icon = data.iconName {
+            UIImage.getImage(icon: icon) { [weak self] (image) in
+                self?.imageView?.image = image
+            }
+        }
     }
 }

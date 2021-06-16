@@ -9,9 +9,12 @@ import Foundation
 import WeatherStorage
 
 struct CityWeatherStoreData: Codable {
-    var cityId: UInt
+    var cityId: UInt?
+    var latitude: Double
+    var longitude: Double
+    var state: String
+    var country: String
     var cityName: String
-    var temperature: String
 }
 
 protocol HomeStorageFetchable {

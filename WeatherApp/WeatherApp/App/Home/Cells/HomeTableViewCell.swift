@@ -11,6 +11,8 @@ import UIKit
 struct HomeTableViewCellViewModel {
     var temperature: String
     var cityName: String
+    var decription: String
+    var iconURL: String?
 }
 
 class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
@@ -42,5 +44,6 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
     func configure(with data: HomeTableViewCellViewModel) {
         self.tempLabel.text = data.temperature
         self.cityNameLabel.text = data.cityName
+        self.descriptionLabel.text = data.decription
     }
 }

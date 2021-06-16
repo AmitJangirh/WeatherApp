@@ -8,16 +8,38 @@
 import Foundation
 import WeatherAPI
 
+struct HomeData {
+    var storeData: CityWeatherStoreData
+    var apiData: WeatherData?
+    
+    init(storeData: CityWeatherStoreData) {
+        self.storeData = storeData
+    }
+}
+
+func areEqual(storeData: CityWeatherStoreData, apiData: WeatherData) -> Bool {
+    if let cityId = storeData.cityId, let apiCityId = apiData.id {
+        return cityId == apiCityId
+    }
+    return storeData.cityName == apiData.name
+}
+
+func areEqual(storeData: CityWeatherStoreData, addData: AddCityData) -> Bool {
+    if let cityId = storeData.cityId, let addCityId = addData.cityId {
+        return cityId == addCityId
+    }
+    return storeData.cityName == addData.cityName
+}
+
 class HomeViewModel {
     // MARK: - Vars
     var storageFetcher: HomeStorageFetchable
     var apiFetcher: HomeAPIFetchable
     // Data Array
-    var storeWeatherArray = [CityWeatherStoreData]()
-    var apiWeatherArray = [WeatherData]()
+    private var homeDataArray = [HomeData]()
     
     var haveContent: Bool {
-        return storeWeatherArray.count > 0
+        return homeDataArray.count > 0
     }
     
     // MARK: - Init
@@ -29,27 +51,46 @@ class HomeViewModel {
     
     // MARK: - Func
     func fetchData(completion: @escaping () -> Void) {
-        self.storeWeatherArray = storageFetcher.cityWeatherData ?? []
+        self.homeDataArray = storageFetcher.cityWeatherData?.map({ HomeData(storeData: $0) }) ?? []
         updateWeather(completion: completion)
     }
     
     private func updateWeather(completion: @escaping () -> Void) {
-        self.apiFetcher.fetchWeather(for: self.storeWeatherArray) { (weatherDataArray, weatherAPIError) in
-            self.apiWeatherArray = weatherDataArray ?? []
+        self.apiFetcher.fetchWeather(for: self.homeDataArray) { (weatherDataArray, weatherAPIError) in
+            self.mappingStoreData(with: weatherDataArray ?? [])
             completion()
         }
     }
     
+    private func mappingStoreData(with weatherData: [WeatherData]) {
+        self.homeDataArray = self.homeDataArray.map({ (homeData) -> HomeData in
+            var mutatingHomeData = homeData
+            mutatingHomeData.apiData = weatherData.first { (apiData) -> Bool in
+                return areEqual(storeData: homeData.storeData, apiData: apiData)
+            }
+            return mutatingHomeData
+        })
+    }
+    
     func addCity(newCity: AddCityData, completion: @escaping () -> Void) {
-        var storeData = self.storageFetcher.cityWeatherData ?? []
-        let existingCities = storeData.filter({ $0.cityName == newCity.cityName || $0.cityId == newCity.cityId })
+        let existingCities = self.homeDataArray.filter { (homeData) -> Bool in
+            return areEqual(storeData: homeData.storeData, addData: newCity)
+        }
         if existingCities.count > 0 {
             // Show alert
             return
         }
-        let city = CityWeatherStoreData(cityId: newCity.cityId, cityName: newCity.cityName, temperature: "")
-        storeData.append(city)
-        self.storageFetcher.cityWeatherData = storeData
+        let storeData = CityWeatherStoreData(cityId: newCity.cityId,
+                                        latitude: newCity.latitude,
+                                        longitude: newCity.longitude,
+                                        state: newCity.state,
+                                        country: newCity.country,
+                                        cityName: newCity.cityName)
+        homeDataArray.append(HomeData(storeData: storeData))
+        // Updating storage data
+        var storeArray = self.storageFetcher.cityWeatherData
+        storeArray?.append(storeData)
+        self.storageFetcher.cityWeatherData = storeArray
         // Update weather
         updateWeather(completion: completion)
     }
@@ -59,22 +100,39 @@ class HomeViewModel {
     }
     
     func rowsCount(for section: Int) -> Int {
-        return storeWeatherArray.count
+        return homeDataArray.count
     }
     
     subscript(indexPath: IndexPath) -> HomeTableViewCellViewModel {
-        let storeData = self.storeWeatherArray[indexPath.row]
-        let apiData = apiWeatherArray.first(where: { $0.name == storeData.cityName })
-        let temperature = "\(apiData?.main?.temp)" + String(format: "23%@", "\u{00B0}")
-        return HomeTableViewCellViewModel(temperature: temperature,
-                                                       cityName: storeData.cityName)
+        let homeData = self.homeDataArray[indexPath.row]
+        return HomeTableViewCellViewModel(homeData: homeData)
     }
     
     func deleteItem(at indexPath: IndexPath, completion: @escaping () -> Void) {
-        self.storeWeatherArray.remove(at: indexPath.row)
+        self.homeDataArray.remove(at: indexPath.row)
         // Update in Store
-        self.storageFetcher.cityWeatherData = self.storeWeatherArray
+        // Updating storage data
+        var storeArray = self.storageFetcher.cityWeatherData
+        storeArray?.remove(at: indexPath.row)
+        self.storageFetcher.cityWeatherData = storeArray
         // Call API to fetch new data
         updateWeather(completion: completion)
+    }
+}
+
+extension HomeTableViewCellViewModel {
+    init(homeData: HomeData) {
+        self.cityName = homeData.storeData.cityName
+        if let temp = homeData.apiData?.main?.temp {
+            self.temperature = "\(temp)"
+        } else {
+            self.temperature = "..."
+        }
+        self.decription = homeData.apiData?.weather?.first?.description ?? "..."
+        if let icon = homeData.apiData?.weather?.first?.icon {
+            self.iconURL = "http://openweathermap.org/img/wn/\(icon)@2x.png"
+        } else {
+            self.iconURL = nil
+        }
     }
 }

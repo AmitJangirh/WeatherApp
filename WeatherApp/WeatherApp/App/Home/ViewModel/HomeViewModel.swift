@@ -69,4 +69,9 @@ class HomeViewModel {
         return HomeTableViewCellViewModel(temperature: temperature,
                                                        cityName: storeData.cityName)
     }
+    
+    func deleteItem(at indexPath: IndexPath, completion: @escaping () -> Void) {
+        self.storeWeatherArray.remove(at: indexPath.row)
+        updateWeather(completion: completion)
+    }
 }

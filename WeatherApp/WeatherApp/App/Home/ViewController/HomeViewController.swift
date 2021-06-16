@@ -20,7 +20,17 @@ class HomeViewController: UIViewController, StoryboardGettable {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var addButton: UIButton!
     @IBOutlet private var noContentLabel: UILabel!
-    
+    private var editBarItem: UIBarButtonItem {
+        UIBarButtonItem(barButtonSystemItem: .edit,
+                        target: self,
+                        action: #selector(editIconDidPress))
+    }
+    private var doneBarItem: UIBarButtonItem {
+        UIBarButtonItem(barButtonSystemItem: .done,
+                        target: self,
+                        action: #selector(editIconDidPress))
+    }
+
     // MARK: - Vars
     var viewModel = HomeViewModel()
     
@@ -43,9 +53,7 @@ class HomeViewController: UIViewController, StoryboardGettable {
         self.title = Constant.title
         self.setupCommonNavigation()
         // Setup right bar button icon
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
-                                                                 target: self,
-                                                                 action: #selector(editIconDidPress))
+        self.navigationItem.rightBarButtonItem = editBarItem
     }
     
     private func setupTableView() {
@@ -71,8 +79,10 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     private func refreshData() {
-        self.refreshNoContentLabel()
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.refreshNoContentLabel()
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Fetch Data
@@ -92,12 +102,16 @@ class HomeViewController: UIViewController, StoryboardGettable {
     
     @objc
     func editIconDidPress() {
-        tableView.isEditing = true
+        tableView.isEditing = !tableView.isEditing
+        let rightBarButtonItem = tableView.isEditing ? doneBarItem : editBarItem
+        self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
         tableView.reloadData()
     }
     
-    private func handleDelete(for: IndexPath) {
-        
+    private func handleDelete(for indexPath: IndexPath) {
+        viewModel.deleteItem(at: indexPath) { [weak self] in
+            self?.refreshData()
+        }
     }
 }
 

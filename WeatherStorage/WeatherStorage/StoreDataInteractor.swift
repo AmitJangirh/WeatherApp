@@ -8,8 +8,22 @@
 import Foundation
 
 public protocol StoreDataInterface {
+    /// Get stored value
+    /// - Parameters:
+    ///   - key: Key string against which data stored
+    ///   - type: Data Type
     func getValue<T: Codable>(for key: String, of type: T.Type) -> T?
+    
+    
+    /// Save the value
+    /// - Parameters:
+    ///   - value: Data to store
+    ///   - key: Key string against which data stored
+    ///   - expiryDate: Optional: Exipry date till data is avaialble for use. If nil, object will be avaialble till it is not removed
     func saveValue<T: Codable>(_ value: T, key: String, expiryDate: Date?)
+    
+    /// Removed stored value for provided key
+    /// - Parameter key: Key string against which data stored
     func removeValue(for key: String)
 }
 
@@ -20,9 +34,13 @@ extension StoreDataInterface {
 }
 
 public var userDefaultStorage: StoreDataInterface {
-    UserDefaultInteractor()
+    UserDefaultStorage()
 }
 
 public var cacheStorage: StoreDataInterface {
-    CacheStorageInteractor()
+    CacheStorage()
+}
+
+public var persistanceStorage: StoreDataInterface {
+    PersistanceStorage()
 }

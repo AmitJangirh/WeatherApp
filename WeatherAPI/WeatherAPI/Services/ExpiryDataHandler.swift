@@ -12,7 +12,7 @@ class ExpiryDataHandler {
     let storage: StoreDataInterface
     let expiryTime: Int = 10 // In Minutes
     
-    init(storage: StoreDataInterface = cacheStorage) {
+    init(storage: StoreDataInterface = persistanceStorage) {
         self.storage = storage
     }
     

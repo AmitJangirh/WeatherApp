@@ -7,16 +7,9 @@
 
 import Foundation
 
-class CacheValue {
+class CacheValue: ExpirableValue {
     var value: Data
     var expiryDate: Date?
-    var isExpired: Bool {
-        guard let expiryDate = self.expiryDate else {
-            return false
-        }
-        let todayDate = Date()
-        return expiryDate < todayDate
-    }
     
     init(value: Data, expiryDate: Date? = nil) {
         self.value = value
@@ -24,7 +17,7 @@ class CacheValue {
     }
 }
 
-class CacheStorageInteractor: NSObject, StoreDataInterface {
+class CacheStorage: NSObject, StoreDataInterface {
     lazy var store: NSCache<NSString, CacheValue> = {
         let store = NSCache<NSString, CacheValue>()
         store.delegate = self
@@ -33,8 +26,11 @@ class CacheStorageInteractor: NSObject, StoreDataInterface {
     
     func getValue<T: Codable>(for key: String, of type: T.Type) -> T? {
         do {
-            guard let cacheValue = store.object(forKey: NSString(string: key)),
-                  !cacheValue.isExpired else {
+            guard let cacheValue = store.object(forKey: NSString(string: key)) else {
+                return nil
+            }
+            if cacheValue.isExpired {
+                removeValue(for: key)
                 return nil
             }
             return try JSONDecoder().decode(T.self, from: cacheValue.value)
@@ -62,7 +58,7 @@ class CacheStorageInteractor: NSObject, StoreDataInterface {
     }
 }
 
-extension CacheStorageInteractor: NSCacheDelegate {
+extension CacheStorage: NSCacheDelegate {
     func cache(_ cache: NSCache<AnyObject, AnyObject>, willEvictObject obj: Any) {
         Logger.log(object: "willEvictObject obj \(obj)")
     }

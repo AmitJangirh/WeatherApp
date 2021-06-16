@@ -1,5 +1,5 @@
 //
-//  UserDefaultInteractor.swift
+//  UserDefaultStorage.swift
 //  WeatherApp
 //
 //  Created by Amit Jangirh on 15/06/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultInteractor: StoreDataInterface {
+class UserDefaultStorage: StoreDataInterface {
     let store = UserDefaults.standard
     
     func getValue<T: Codable>(for key: String, of type: T.Type) -> T? {

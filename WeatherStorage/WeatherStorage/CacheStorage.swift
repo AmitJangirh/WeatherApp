@@ -9,17 +9,18 @@ import Foundation
 
 class CacheValue {
     var value: Data
-    var expiryDate: Double?
+    var expiryDate: Date?
     var isExpired: Bool {
         guard let expiryDate = self.expiryDate else {
             return false
         }
-        return expiryDate < Date().timeIntervalSince1970
+        let todayDate = Date()
+        return expiryDate < todayDate
     }
     
     init(value: Data, expiryDate: Date? = nil) {
         self.value = value
-        self.expiryDate = expiryDate?.timeIntervalSince1970
+        self.expiryDate = expiryDate
     }
 }
 
@@ -30,10 +31,10 @@ class CacheStorageInteractor: NSObject, StoreDataInterface {
         return store
     }()
     
-    func getValue<T: Codable>(for key: String) -> T? {
+    func getValue<T: Codable>(for key: String, of type: T.Type) -> T? {
         do {
             guard let cacheValue = store.object(forKey: NSString(string: key)),
-                  cacheValue.isExpired else {
+                  !cacheValue.isExpired else {
                 return nil
             }
             return try JSONDecoder().decode(T.self, from: cacheValue.value)

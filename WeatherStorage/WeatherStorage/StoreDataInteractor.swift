@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol StoreDataInterface {
-    func getValue<T: Codable>(for key: String) -> T?
+    func getValue<T: Codable>(for key: String, of type: T.Type) -> T?
     func saveValue<T: Codable>(_ value: T, key: String, expiryDate: Date?)
     func removeValue(for key: String)
 }

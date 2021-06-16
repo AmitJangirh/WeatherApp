@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		FDF0F0FC2679D7F4001A4BDA /* WeatherStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF0F0F22679D7F4001A4BDA /* WeatherStorage.framework */; };
-		FDF0F1012679D7F4001A4BDA /* WeatherStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F1002679D7F4001A4BDA /* WeatherStorageTests.swift */; };
 		FDF0F1032679D7F4001A4BDA /* WeatherStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = FDF0F0F52679D7F4001A4BDA /* WeatherStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDF0F1212679D8B4001A4BDA /* CacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F11E2679D8B4001A4BDA /* CacheStorage.swift */; };
 		FDF0F1222679D8B4001A4BDA /* UserDefaultInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F11F2679D8B4001A4BDA /* UserDefaultInteractor.swift */; };
 		FDF0F1232679D8B4001A4BDA /* StoreDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F1202679D8B4001A4BDA /* StoreDataInteractor.swift */; };
 		FDF0F12B2679D8C7001A4BDA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F12A2679D8C7001A4BDA /* Logger.swift */; };
+		FDF0F13E2679E6E6001A4BDA /* WeatherStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F13D2679E6E6001A4BDA /* WeatherStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +31,12 @@
 		FDF0F0F52679D7F4001A4BDA /* WeatherStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherStorage.h; sourceTree = "<group>"; };
 		FDF0F0F62679D7F4001A4BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDF0F0FB2679D7F4001A4BDA /* WeatherStorageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherStorageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDF0F1002679D7F4001A4BDA /* WeatherStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStorageTests.swift; sourceTree = "<group>"; };
 		FDF0F1022679D7F4001A4BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDF0F11E2679D8B4001A4BDA /* CacheStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheStorage.swift; sourceTree = "<group>"; };
 		FDF0F11F2679D8B4001A4BDA /* UserDefaultInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultInteractor.swift; sourceTree = "<group>"; };
 		FDF0F1202679D8B4001A4BDA /* StoreDataInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDataInteractor.swift; sourceTree = "<group>"; };
 		FDF0F12A2679D8C7001A4BDA /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FDF0F13D2679E6E6001A4BDA /* WeatherStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 		FDF0F0FF2679D7F4001A4BDA /* WeatherStorageTests */ = {
 			isa = PBXGroup;
 			children = (
-				FDF0F1002679D7F4001A4BDA /* WeatherStorageTests.swift */,
+				FDF0F13D2679E6E6001A4BDA /* WeatherStorageTests.swift */,
 				FDF0F1022679D7F4001A4BDA /* Info.plist */,
 			);
 			path = WeatherStorageTests;
@@ -218,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDF0F1012679D7F4001A4BDA /* WeatherStorageTests.swift in Sources */,
+				FDF0F13E2679E6E6001A4BDA /* WeatherStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

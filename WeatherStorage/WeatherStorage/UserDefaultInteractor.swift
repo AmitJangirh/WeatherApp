@@ -10,7 +10,7 @@ import Foundation
 class UserDefaultInteractor: StoreDataInterface {
     let store = UserDefaults.standard
     
-    func getValue<T: Codable>(for key: String) -> T? {
+    func getValue<T: Codable>(for key: String, of type: T.Type) -> T? {
         do {
             guard let decodedValue = store.object(forKey: key) as? Data else {
                 return nil

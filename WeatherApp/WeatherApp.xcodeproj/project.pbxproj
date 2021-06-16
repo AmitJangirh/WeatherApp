@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD131D2A2679C815009E9F74 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */; };
 		FD5DA43626789FF800A87AFE /* GeoLocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */; };
 		FD5DA43E2678A7C800A87AFE /* UserDefaultInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5DA43D2678A7C800A87AFE /* UserDefaultInteractor.swift */; };
 		FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocationFetcher.swift; sourceTree = "<group>"; };
 		FD5DA43D2678A7C800A87AFE /* UserDefaultInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultInteractor.swift; sourceTree = "<group>"; };
 		FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,7 @@
 				FDC161B62677EADE00F36C8B /* FileParser.swift */,
 				FDC161D226786C5300F36C8B /* LocationFetcher.swift */,
 				FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */,
+				FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */,
 			);
 			path = AppUtility;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FDE73F1926779FF000692CE7 /* StoreDataInteractor.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
+				FD131D2A2679C815009E9F74 /* UIViewControllerExtension.swift in Sources */,
 				FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */,
 				FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */,
 				FD5DA43E2678A7C800A87AFE /* UserDefaultInteractor.swift in Sources */,

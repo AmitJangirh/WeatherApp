@@ -16,8 +16,8 @@ class HomeViewModel {
     var storeWeatherArray = [CityWeatherStoreData]()
     var apiWeatherArray = [WeatherData]()
     
-    var isNoContentHidden: Bool {
-        return !(storeWeatherArray.count == 0)
+    var haveContent: Bool {
+        return storeWeatherArray.count > 0
     }
     
     // MARK: - Init

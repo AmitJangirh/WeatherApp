@@ -12,7 +12,8 @@ class HomeViewController: UIViewController, StoryboardGettable {
     struct Constant {
         static let title = "Home"
         static let addButtonTitle = "+"
-        static let rowHeight: CGFloat = 50
+        static let rowHeight: CGFloat = 150
+        static let noContentText = "Please Add Location"
     }
     
     // MARK: - IBOutlets
@@ -40,9 +41,11 @@ class HomeViewController: UIViewController, StoryboardGettable {
     
     private func setupViewController() {
         self.title = Constant.title
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
-        self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
-        self.navigationController?.navigationBar.backgroundColor = Theme.Color.greyColor
+        self.setupCommonNavigation()
+        // Setup right bar button icon
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                                                 target: self,
+                                                                 action: #selector(editIconDidPress))
     }
     
     private func setupTableView() {
@@ -62,8 +65,9 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     private func refreshNoContentLabel() {
-        noContentLabel.isHidden = viewModel.isNoContentHidden
-        noContentLabel.text = "Please Add Location"
+        noContentLabel.text = Constant.noContentText
+        noContentLabel.isHidden = viewModel.haveContent
+        editButtonItem.isEnabled = viewModel.haveContent
     }
     
     private func refreshData() {
@@ -84,6 +88,16 @@ class HomeViewController: UIViewController, StoryboardGettable {
         let addVC = AddCityViewController.getVC()
         addVC.delegate = self
         self.navigationController?.show(addVC, sender: self)
+    }
+    
+    @objc
+    func editIconDidPress() {
+        tableView.isEditing = true
+        tableView.reloadData()
+    }
+    
+    private func handleDelete(for: IndexPath) {
+        
     }
 }
 
@@ -120,5 +134,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView.isEditing {
+            return .delete
+        }
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            handleDelete(for: indexPath)
+        }
     }
 }

@@ -48,10 +48,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSm-8Z-XWN">
-                                <rect key="frame" x="299" y="767" width="45" height="45"/>
+                                <rect key="frame" x="334" y="772" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="DeN-zn-jZZ"/>
-                                    <constraint firstAttribute="width" constant="45" id="naJ-lw-JPm"/>
+                                    <constraint firstAttribute="height" constant="60" id="DeN-zn-jZZ"/>
+                                    <constraint firstAttribute="width" constant="60" id="naJ-lw-JPm"/>
                                 </constraints>
                                 <state key="normal" title="+"/>
                                 <connections>
@@ -62,7 +62,7 @@
                         <viewLayoutGuide key="safeArea" id="rBp-nf-3GZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="GSm-8Z-XWN" secondAttribute="trailing" constant="70" id="98k-dI-orz"/>
+                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="GSm-8Z-XWN" secondAttribute="trailing" constant="20" id="98k-dI-orz"/>
                             <constraint firstAttribute="bottom" secondItem="Nfz-qx-TLI" secondAttribute="bottom" id="JWE-cU-1ko"/>
                             <constraint firstItem="rBp-nf-3GZ" firstAttribute="trailing" secondItem="Nfz-qx-TLI" secondAttribute="trailing" id="LSx-5E-UrG"/>
                             <constraint firstItem="pje-nq-qc8" firstAttribute="top" secondItem="rBp-nf-3GZ" secondAttribute="top" id="YeS-8v-hGr"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="rBp-nf-3GZ" firstAttribute="bottom" secondItem="pje-nq-qc8" secondAttribute="bottom" id="l4u-Ut-TWS"/>
                             <constraint firstItem="Nfz-qx-TLI" firstAttribute="leading" secondItem="rBp-nf-3GZ" secondAttribute="leading" id="tTe-jz-yAC"/>
                             <constraint firstItem="Nfz-qx-TLI" firstAttribute="top" secondItem="rBp-nf-3GZ" secondAttribute="top" id="veX-8H-Kmb"/>
-                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="bottom" secondItem="GSm-8Z-XWN" secondAttribute="bottom" constant="50" id="x7P-UJ-9tj"/>
+                            <constraint firstItem="rBp-nf-3GZ" firstAttribute="bottom" secondItem="GSm-8Z-XWN" secondAttribute="bottom" constant="30" id="x7P-UJ-9tj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LWR-bG-Bxc"/>

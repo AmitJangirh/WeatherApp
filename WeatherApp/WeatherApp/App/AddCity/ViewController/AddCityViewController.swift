@@ -52,10 +52,7 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     
     private func setupViewController() {
         self.title = Constant.title
-        self.navigationController?.navigationBar.barTintColor = Theme.Color.greyColor
-        self.navigationController?.navigationBar.backgroundColor = Theme.Color.greyColor
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.Color.tintColor]
-        self.navigationController?.navigationBar.tintColor = Theme.Color.tintColor
+        self.setupCommonNavigation()
         // Setup right bar button icon
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                                  target: self,

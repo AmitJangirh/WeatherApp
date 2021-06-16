@@ -162,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7DAC7526772D3F00D05D24 /* Home */,
+				FDF0F161267A3582001A4BDA /* Search */,
 				FDE73F452677D30900692CE7 /* AddCity */,
 			);
 			path = App;
@@ -172,7 +173,6 @@
 			children = (
 				FDE73F2D2677A70200692CE7 /* ViewModel */,
 				FDE73F2A2677A6F900692CE7 /* ViewController */,
-				FDE73F232677A6CE00692CE7 /* Utility */,
 				FDE73F302677A70C00692CE7 /* Cells */,
 			);
 			path = Home;
@@ -300,15 +300,6 @@
 			path = WeatherApp/Resources;
 			sourceTree = SOURCE_ROOT;
 		};
-		FDE73F232677A6CE00692CE7 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				FD7DAC9326774AB100D05D24 /* HomeStorageFetcher.swift */,
-				FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		FDE73F2A2677A6F900692CE7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				FD7DAC7626772D3F00D05D24 /* HomeViewModel.swift */,
+				FD7DAC9326774AB100D05D24 /* HomeStorageFetcher.swift */,
+				FDE73F372677C22900692CE7 /* HomeAPIFetcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -347,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				FDE73F412677D30400692CE7 /* AddCityViewController.swift */,
-				FDC161A72677D83400F36C8B /* SearchCityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -356,10 +348,34 @@
 			isa = PBXGroup;
 			children = (
 				FDE73F4F2677D33400692CE7 /* AddCityViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FDF0F161267A3582001A4BDA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FDF0F164267A359F001A4BDA /* VieModel */,
+				FDF0F167267A35A8001A4BDA /* ViewController */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FDF0F164267A359F001A4BDA /* VieModel */ = {
+			isa = PBXGroup;
+			children = (
 				FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */,
 				FDE024412678AE350005BFFB /* CityListFetcher.swift */,
 			);
-			path = ViewModel;
+			path = VieModel;
+			sourceTree = "<group>";
+		};
+		FDF0F167267A35A8001A4BDA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FDC161A72677D83400F36C8B /* SearchCityViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

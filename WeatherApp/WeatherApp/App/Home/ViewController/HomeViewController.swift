@@ -116,7 +116,7 @@ class HomeViewController: UIViewController, StoryboardGettable {
 }
 
 extension HomeViewController: AddCityViewControllerDelegate {
-    func addCity(cityData: SelectedCityData) {
+    func addCity(cityData: AddCityData) {
         viewModel.addCity(newCity: cityData) { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()

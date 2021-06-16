@@ -13,7 +13,7 @@ class AddCityViewModel {
     var geoLocationFetcher: GeoLocationFetchable
     var cityListFether: CityListFetchable
     
-    var selectedCity: SelectedCityData?
+    var selectedCity: AddCityData?
 
     init(locationFetcher: LocationFetchable = LocationFetcher(),
          geoLocationFetcher: GeoLocationFetchable = GeoLocationFetcher(),
@@ -36,14 +36,15 @@ class AddCityViewModel {
     private func fetchGeoLocation(coord: Coordinates, completion: @escaping (AddCityData?) -> Void) {
         geoLocationFetcher.fetchGeoLocation(lat: coord.latitude,
                                             lon: coord.longitude) { (geoLocation, error) in
-            if let cityName = geoLocation?.cityName,
-               let latitude = geoLocation?.latitude,
+            if let latitude = geoLocation?.latitude,
                let longitude = geoLocation?.longitude {
-                let city = AddCityData(cityName: cityName,
-                                       cityId: 0,
-                                       latitude: latitude,
-                                       longitude: longitude)
-                self.fetchMatchingCity(for: city, completion: completion)
+                let addcity = AddCity(cityName: geoLocation?.cityName ?? "",
+                                      cityId: nil,
+                                      latitude: latitude,
+                                      longitude: longitude,
+                                      state: geoLocation?.state ?? "",
+                                      country: geoLocation?.country ?? "")
+                self.fetchMatchingCity(for: addcity, completion: completion)
                 return
             }
             completion(nil)

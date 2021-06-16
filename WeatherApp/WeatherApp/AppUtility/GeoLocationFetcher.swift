@@ -24,14 +24,14 @@ ocean: String?                  // eg. Pacific Ocean
 areasOfInterest: [String]?      // eg. Golden Gate Park
 */
 
-struct GeoLocation {
-    var cityName: String?
-    var state: String?
-    var postalCode: String?
-    var country: String?
-    var countryCode: String?
-    var latitude: Double?
-    var longitude: Double?
+protocol GeoLocation {
+    var cityName: String? { get }
+    var state: String? { get }
+    var postalCode: String? { get }
+    var country: String? { get }
+    var countryCode: String? { get }
+    var latitude: Double? { get }
+    var longitude: Double? { get }
 }
 
 protocol GeoLocationFetchable {
@@ -49,13 +49,22 @@ class GeoLocationFetcher: GeoLocationFetchable {
                 return
             }
             if let firstPlacemark = placemarks?.first {
-                let geoLocation = GeoLocation(cityName: firstPlacemark.locality,
-                                              state: firstPlacemark.administrativeArea,
-                                              postalCode: firstPlacemark.postalCode,
-                                              country: firstPlacemark.country,
-                                              countryCode: firstPlacemark.isoCountryCode,
-                                              latitude: firstPlacemark.location?.altitude,
-                                              longitude: firstPlacemark.location?.altitude)
+                struct GeoLocationData: GeoLocation {
+                    var cityName: String?
+                    var state: String?
+                    var postalCode: String?
+                    var country: String?
+                    var countryCode: String?
+                    var latitude: Double?
+                    var longitude: Double?
+                }
+                let geoLocation = GeoLocationData(cityName: firstPlacemark.locality,
+                                                  state: firstPlacemark.administrativeArea,
+                                                  postalCode: firstPlacemark.postalCode,
+                                                  country: firstPlacemark.country,
+                                                  countryCode: firstPlacemark.isoCountryCode,
+                                                  latitude: firstPlacemark.location?.altitude,
+                                                  longitude: firstPlacemark.location?.altitude)
                 completion(geoLocation, nil)
                 return
             }

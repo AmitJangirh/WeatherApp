@@ -9,15 +9,26 @@ import Foundation
 import UIKit
 import MapKit
 
-protocol AddCityViewControllerDelegate: class {
-    func addCity(cityData: SelectedCityData)
+protocol AddCityData {
+    var cityName: String { get }
+    var cityId: UInt? { get set }
+    var latitude: Double { get }
+    var longitude: Double { get }
+    var state: String { get }
+    var country: String { get }
 }
 
-struct AddCityData: SelectedCityData {
+struct AddCity: AddCityData {
     var cityName: String
-    var cityId: UInt
+    var cityId: UInt?
     var latitude: Double
     var longitude: Double
+    var state: String
+    var country: String
+}
+
+protocol AddCityViewControllerDelegate: class {
+    func addCity(cityData: AddCityData)
 }
 
 class AddCityViewController: UIViewController, StoryboardGettable {
@@ -113,8 +124,13 @@ class AddCityViewController: UIViewController, StoryboardGettable {
 }
 
 extension AddCityViewController: SearchCityViewControllerDelegate {
-    func didSelect(selectedCity: SelectedCityData) {
-        viewModel.selectedCity = selectedCity
+    func didSelect(selectedCity: SearchedCityData) {
+        viewModel.selectedCity = AddCity(cityName: selectedCity.cityName,
+                                         cityId: selectedCity.cityId,
+                                         latitude: selectedCity.latitude,
+                                         longitude: selectedCity.longitude,
+                                         state: selectedCity.state,
+                                         country: selectedCity.country)
         loadMap(with: selectedCity.latitude, lon: selectedCity.longitude)
     }
 }

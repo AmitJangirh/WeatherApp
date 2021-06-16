@@ -40,9 +40,9 @@ class HomeViewModel {
         }
     }
     
-    func addCity(newCity: SelectedCityData, completion: @escaping () -> Void) {
+    func addCity(newCity: AddCityData, completion: @escaping () -> Void) {
         var storeData = self.storageFetcher.cityWeatherData ?? []
-        let existingCities = storeData.filter({ $0.cityName == newCity.cityName })
+        let existingCities = storeData.filter({ $0.cityName == newCity.cityName || $0.cityId == newCity.cityId })
         if existingCities.count > 0 {
             // Show alert
             return

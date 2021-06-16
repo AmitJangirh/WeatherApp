@@ -8,15 +8,26 @@
 import Foundation
 import UIKit
 
-protocol SelectedCityData {
-    var cityName: String { get set }
-    var cityId: UInt { get set }
-    var latitude: Double { get set }
-    var longitude: Double { get set }
+protocol SearchedCityData {
+    var cityName: String { get }
+    var cityId: UInt? { get }
+    var latitude: Double { get }
+    var longitude: Double { get }
+    var state: String { get }
+    var country: String { get }
+}
+
+struct SearchedCity: SearchedCityData {
+    var cityName: String
+    var cityId: UInt?
+    var latitude: Double
+    var longitude: Double
+    var state: String
+    var country: String
 }
 
 protocol SearchCityViewControllerDelegate: class {
-    func didSelect(selectedCity: SelectedCityData)
+    func didSelect(selectedCity: SearchedCityData)
 }
 
 class SearchCityViewController: UIViewController, StoryboardGettable {
@@ -157,16 +168,12 @@ extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let searchData = viewModel[indexPath]
-        struct SelectedCity: SelectedCityData {
-            var cityName: String
-            var cityId: UInt
-            var latitude: Double
-            var longitude: Double
-        }
-        let selectedCity = SelectedCity(cityName: searchData.cityName,
+        let selectedCity = SearchedCity(cityName: searchData.cityName,
                                         cityId: searchData.cityId,
                                         latitude: searchData.coordinates.latitude,
-                                        longitude: searchData.coordinates.longitude)
+                                        longitude: searchData.coordinates.longitude,
+                                        state: searchData.state,
+                                        country: searchData.country)
         self.dismiss(animated: true) { [weak self] in
             self?.delegate?.didSelect(selectedCity: selectedCity)
         }

@@ -23,6 +23,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         didSet {
             self.cityNameLabel.font = Theme.Font.boldLargeFont32
             self.cityNameLabel.textColor = Theme.Color.greyColor
+            self.cityNameLabel.numberOfLines = 0
         }
     }
     @IBOutlet private var tempLabel: UILabel! {
@@ -35,6 +36,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         didSet {
             self.descriptionLabel.font = Theme.Font.mediumFont18
             self.descriptionLabel.textColor = Theme.Color.greyColor
+            self.cityNameLabel.numberOfLines = 0
         }
     }
     @IBOutlet private var weatherIconImageView: UIImageView!
@@ -45,10 +47,26 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         self.tempLabel.text = data.temperature
         self.cityNameLabel.text = data.cityName
         self.descriptionLabel.text = data.decription
-        if let icon = data.iconName {
-            UIImage.getImage(icon: icon) { [weak self] (image) in
-                self?.imageView?.image = image
+        self.setIconImage(with: data)
+    }
+    
+    private func setIconImage(with data: HomeTableViewCellViewModel) {
+        guard let icon = data.iconName else {
+            self.setPlaceholderImage()
+            return
+        }
+        UIImage.getImage(icon: icon) { [weak self] (image) in
+            DispatchQueue.main.async {
+                if let iconImage = image {
+                    self?.weatherIconImageView?.image = iconImage
+                } else {
+                    self?.setPlaceholderImage()
+                }
             }
         }
+    }
+    
+    private func setPlaceholderImage() {
+        self.weatherIconImageView?.image = UIImage.getImage(imageName: .defaultImage)
     }
 }

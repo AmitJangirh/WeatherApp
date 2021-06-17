@@ -21,3 +21,16 @@ extension UIImage {
         }
     }
 }
+
+extension UIImage {
+    struct ImageName {
+        let rawValue: String
+        
+        static let defaultImage: ImageName = ImageName(rawValue: "DefaultImage")
+    }
+    
+    static func getImage(imageName: ImageName) -> UIImage? {
+        UIImage(named: imageName.rawValue)
+    }
+}
+

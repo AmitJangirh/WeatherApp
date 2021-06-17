@@ -12,7 +12,7 @@ class HomeViewController: UIViewController, StoryboardGettable {
     struct Constant {
         static let title = "Home"
         static let addButtonTitle = "+"
-        static let rowHeight: CGFloat = 150
+        static let rowHeight: CGFloat = 120
         static let noContentText = "Please Add Location"
     }
     

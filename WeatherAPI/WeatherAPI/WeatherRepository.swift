@@ -82,7 +82,8 @@ class WeatherRepository {
     }
     
     static func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void) {
-        let imageURL = Configuration.current.imageDomain + "\(icon)@2x.png"
+        // Sample URl: http://openweathermap.org/img/wn/10d@2x.png
+        let imageURL = Configuration.current.imageBaseURL + "\(icon)@2x.png"
         if let imageData = cacheStorage.getValue(for: imageURL, of: Data.self) {
             completion(.success(imageData))
             return

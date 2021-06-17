@@ -200,6 +200,40 @@
             </objects>
             <point key="canvasLocation" x="2427.536231884058" y="12.723214285714285"/>
         </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="CBc-fm-QfI">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" id="iRV-1k-6Su" customClass="SettingViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gSi-jd-get">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="br2-m2-Ssx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iRV-1k-6Su" id="jFc-iE-j84"/>
+                                    <outlet property="delegate" destination="iRV-1k-6Su" id="nbd-K3-L9I"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PJN-ZC-Ukx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="br2-m2-Ssx" firstAttribute="leading" secondItem="PJN-ZC-Ukx" secondAttribute="leading" id="78f-VN-gsJ"/>
+                            <constraint firstItem="br2-m2-Ssx" firstAttribute="top" secondItem="PJN-ZC-Ukx" secondAttribute="top" id="EuT-1N-Z0F"/>
+                            <constraint firstItem="PJN-ZC-Ukx" firstAttribute="trailing" secondItem="br2-m2-Ssx" secondAttribute="trailing" id="q7x-Op-gCk"/>
+                            <constraint firstAttribute="bottom" secondItem="br2-m2-Ssx" secondAttribute="bottom" id="tfn-Om-Khs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="br2-m2-Ssx" id="OrE-Fb-OPh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phs-UQ-LBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3277" y="25"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

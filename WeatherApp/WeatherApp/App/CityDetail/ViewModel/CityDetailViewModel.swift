@@ -63,6 +63,7 @@ class CityDetailViewModel {
         guard let data = self.self.data else {
             return
         }
+        // One can append more cells and sections to it
         let detailCell = DetailCell(data: CityDetailCellViewModel(data: data))
         let detailSection = DetailSection(cells: [detailCell])
         self.sections = [detailSection]
@@ -84,12 +85,14 @@ class CityDetailViewModel {
     }
 }
 
+// MARK: - Protocols
+// Base protocol for Section
 protocol SectionProtocol {
     var cells: [CellProtocol] { get }
 }
 
-protocol CellProtocol {
-}
+// Base protocol for Cell
+protocol CellProtocol {}
 
 struct DetailSection: SectionProtocol {
     var cells: [CellProtocol]

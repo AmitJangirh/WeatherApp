@@ -26,6 +26,7 @@ extension UIImage {
         let rawValue: String
         
         static let defaultImage: ImageName = ImageName(rawValue: "DefaultImage")
+        static let settingIcon: ImageName = ImageName(rawValue: "SettingIcon")
     }
     
     static func getImage(imageName: ImageName) -> UIImage? {

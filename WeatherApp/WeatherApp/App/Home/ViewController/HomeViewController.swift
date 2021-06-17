@@ -21,10 +21,17 @@ class HomeViewController: UIViewController, StoryboardGettable {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var addButton: UIButton!
     @IBOutlet private var noContentLabel: UILabel!
+    // Getters
     private var editBarItem: UIBarButtonItem {
         UIBarButtonItem(barButtonSystemItem: .edit,
                         target: self,
                         action: #selector(editIconDidPress))
+    }
+    private var settingBarItem: UIBarButtonItem {
+        UIBarButtonItem(image: UIImage.getImage(imageName: .settingIcon),
+                        style: .plain,
+                        target: self,
+                        action: #selector(settingIconDidPress))
     }
     private var doneBarItem: UIBarButtonItem {
         UIBarButtonItem(barButtonSystemItem: .done,
@@ -54,7 +61,7 @@ class HomeViewController: UIViewController, StoryboardGettable {
         self.title = Constant.title
         self.setupCommonNavigation()
         // Setup right bar button icon
-        self.navigationItem.rightBarButtonItem = editBarItem
+        self.navigationItem.setRightBarButtonItems([settingBarItem, editBarItem], animated: false)
     }
     
     private func setupTableView() {
@@ -105,8 +112,13 @@ class HomeViewController: UIViewController, StoryboardGettable {
     func editIconDidPress() {
         tableView.isEditing = !tableView.isEditing
         let rightBarButtonItem = tableView.isEditing ? doneBarItem : editBarItem
-        self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
+        self.navigationItem.setRightBarButtonItems([settingBarItem, rightBarButtonItem], animated: false)
         tableView.reloadData()
+    }
+    
+    @objc func settingIconDidPress() {
+        let settingVC = SettingViewController.getVC()
+        self.navigationController?.show(settingVC, sender: self)
     }
     
     private func handleDelete(for indexPath: IndexPath) {

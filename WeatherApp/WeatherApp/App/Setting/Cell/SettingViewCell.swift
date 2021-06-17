@@ -30,8 +30,15 @@ class SegmentViewCell: UITableViewCell, TableCellAdaptable {
             return
         }
         self.temperatureUnit.text = settingRow.title
-        for (index, value) in settingRow.values.enumerated() {
-            self.segmentControl.setTitle(value.rawValue, forSegmentAt: index)
+        for value in settingRow.values {
+            self.segmentControl.setTitle(value.rawValue, forSegmentAt: value.index)
+        }
+        self.segmentControl.selectedSegmentIndex = SettingStorage.shared.temperatureUnit.index
+    }
+    
+    @IBAction func changeValue(sender: UISegmentedControl) {
+        if let selectedSetting = TemperatureRow.TemperatureUnit(index: sender.selectedSegmentIndex) {
+            SettingStorage.shared.temperatureUnit = selectedSetting
         }
     }
 }

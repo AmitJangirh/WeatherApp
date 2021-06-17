@@ -31,6 +31,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeValueWithSender:" destination="vv2-eQ-l6r" eventType="valueChanged" id="Yjo-fW-pnd"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                     </stackView>

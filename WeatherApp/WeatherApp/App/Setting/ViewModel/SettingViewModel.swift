@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import WeatherStorage
 
 class SettingViewModel {
     var sections: [SettingSectionRepresentable] = []
-    
+
     init() {
         buildSections()
     }
@@ -71,6 +72,24 @@ struct TemperatureRow: SegmentRowRepresentable {
     enum TemperatureUnit: String, CaseIterable {
         case celsius = "\u{00B0} C"
         case fahrenheit = "\u{00B0} F"
+        
+        var index: Int {
+            switch self {
+            case .celsius: return 0
+            case .fahrenheit: return 1
+            }
+        }
+        
+        init?(index: Int) {
+            switch index {
+            case 0: self = .celsius
+            case 1: self = .fahrenheit
+            default:
+                return nil
+            }
+        }
+        
+        static let defaultValue = TemperatureUnit.celsius
     }
 
     var type: RowType = .segmentControl

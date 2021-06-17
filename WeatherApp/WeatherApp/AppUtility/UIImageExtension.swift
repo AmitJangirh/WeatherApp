@@ -27,6 +27,7 @@ extension UIImage {
         
         static let defaultImage: ImageName = ImageName(rawValue: "DefaultImage")
         static let settingIcon: ImageName = ImageName(rawValue: "SettingIcon")
+        static let removeIcon: ImageName = ImageName(rawValue: "RemoveIcon")
     }
     
     static func getImage(imageName: ImageName) -> UIImage? {
@@ -34,3 +35,8 @@ extension UIImage {
     }
 }
 
+extension UIDevice {
+    static var isIPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+}

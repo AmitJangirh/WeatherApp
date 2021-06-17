@@ -7,18 +7,40 @@
 
 import Foundation
 import WeatherAPI
+import CoreGraphics
+import UIKit
+
 
 class HomeViewModel {
+    // MARK: - Constant
+    struct Constant {
+        static let cellHeight: CGFloat = 130
+        static var itemsPerRow: CGFloat {
+            if UIDevice.isIPad {
+                return 2
+            } else {
+                if UIScreen.main.bounds.size.width > UIScreen.main.bounds.size.height {
+                    return 2
+                }
+                return 1
+            }
+        }
+        static let sectionInsets = UIEdgeInsets(top: 50.0,
+                                                 left: 20.0,
+                                                 bottom: 50.0,
+                                                 right: 20.0)
+    }
+    
     // MARK: - Vars
     var storageFetcher: HomeStorageFetchable
     var apiFetcher: HomeAPIFetchable
     // Data Array
     private var storeWeatherArray = [CityWeatherStoreData]()
     private var apiWeatherArray = [WeatherData]()
-    
     var haveContent: Bool {
         return storeWeatherArray.count > 0
     }
+    var isEditing: Bool = false
     
     // MARK: - Init
     init(storageFetcher: HomeStorageFetchable = HomeStorageFetcher(),
@@ -54,6 +76,18 @@ class HomeViewModel {
         // Update weather
         updateWeather(completion: completion)
     }
+    
+    func sizeOfItem(at indexpath: IndexPath) -> CGSize {
+        let deviceWidth = UIScreen.main.bounds.size.width
+        let paddingSpace = Constant.sectionInsets.left * (Constant.itemsPerRow + 1)
+        let availableWidth = deviceWidth - paddingSpace
+        let widthPerItem = availableWidth / Constant.itemsPerRow
+        return CGSize(width: widthPerItem, height: Constant.cellHeight)
+    }
+    
+    func insetForSectionAt(at section: Int) -> UIEdgeInsets {
+        return Constant.sectionInsets
+    }
 
     func sectionCount() -> Int {
         return 1
@@ -86,8 +120,10 @@ class HomeViewModel {
         }
     }
     
-    func deleteItem(at indexPath: IndexPath, completion: @escaping () -> Void) {
-        self.storeWeatherArray.remove(at: indexPath.row)
+    func deleteItems(at indexPaths: [IndexPath], completion: @escaping () -> Void) {
+        indexPaths.forEach { (indexPath) in
+            self.storeWeatherArray.remove(at: indexPath.row)
+        }
         // Update in Store
         self.storageFetcher.cityWeatherData = self.storeWeatherArray
         // Call API to fetch new data

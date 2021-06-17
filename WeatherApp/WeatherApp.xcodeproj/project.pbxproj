@@ -10,6 +10,9 @@
 		FD131D2A2679C815009E9F74 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */; };
 		FD5DA43626789FF800A87AFE /* GeoLocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */; };
 		FD6BABBC267BCF1A0041505A /* SettingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6BABBB267BCF190041505A /* SettingStorage.swift */; };
+		FD6BABC0267BD61E0041505A /* CollectionCellRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6BABBF267BD61E0041505A /* CollectionCellRegisterable.swift */; };
+		FD6BABC4267BD6E80041505A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6BABC3267BD6E80041505A /* HomeCollectionViewCell.swift */; };
+		FD6BABC8267BD6F30041505A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD6BABC7267BD6F30041505A /* HomeCollectionViewCell.xib */; };
 		FD7DAC6026772B9D00D05D24 /* NetworkConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; };
 		FD7DAC6126772B9D00D05D24 /* NetworkConnection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD7DAC6826772BFD00D05D24 /* WeatherAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */; };
@@ -21,8 +24,6 @@
 		FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC8126772FB300D05D24 /* Theme.swift */; };
 		FD7DAC8A26773C9700D05D24 /* MirrorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC8926773C9700D05D24 /* MirrorObject.swift */; };
 		FD7DAC9026773D1A00D05D24 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DAC8F26773D1A00D05D24 /* MockNavigationController.swift */; };
-		FD7DACE72677652100D05D24 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7DACE62677652100D05D24 /* HomeTableViewCell.swift */; };
-		FD7DACEB2677653200D05D24 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */; };
 		FDC161A82677D83400F36C8B /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161A72677D83400F36C8B /* SearchCityViewController.swift */; };
 		FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */; };
 		FDC161B02677DADA00F36C8B /* City_List.json in Resources */ = {isa = PBXBuildFile; fileRef = FDC161AF2677DADA00F36C8B /* City_List.json */; };
@@ -93,6 +94,9 @@
 		FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocationFetcher.swift; sourceTree = "<group>"; };
 		FD6BABBB267BCF190041505A /* SettingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStorage.swift; sourceTree = "<group>"; };
+		FD6BABBF267BD61E0041505A /* CollectionCellRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellRegisterable.swift; sourceTree = "<group>"; };
+		FD6BABC3267BD6E80041505A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FD6BABC7267BD6F30041505A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		FD7DAC5F26772B9D00D05D24 /* NetworkConnection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkConnection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7DAC6726772BFD00D05D24 /* WeatherAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WeatherAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7DAC7626772D3F00D05D24 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -102,8 +106,6 @@
 		FD7DAC8126772FB300D05D24 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		FD7DAC8926773C9700D05D24 /* MirrorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorObject.swift; sourceTree = "<group>"; };
 		FD7DAC8F26773D1A00D05D24 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
-		FD7DACE62677652100D05D24 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		FDC161A72677D83400F36C8B /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FDC161AF2677DADA00F36C8B /* City_List.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = City_List.json; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				FD7DAC7F26772FB300D05D24 /* StoryboardGettable.swift */,
 				FD7DAC8026772FB300D05D24 /* TableCellRegisterable.swift */,
+				FD6BABBF267BD61E0041505A /* CollectionCellRegisterable.swift */,
 				FD7DAC8126772FB300D05D24 /* Theme.swift */,
 				FDE73F1426779D8B00692CE7 /* Logger.swift */,
 				FDC161B62677EADE00F36C8B /* FileParser.swift */,
@@ -383,8 +386,8 @@
 		FDE73F302677A70C00692CE7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FD7DACE62677652100D05D24 /* HomeTableViewCell.swift */,
-				FD7DACEA2677653200D05D24 /* HomeTableViewCell.xib */,
+				FD6BABC3267BD6E80041505A /* HomeCollectionViewCell.swift */,
+				FD6BABC7267BD6F30041505A /* HomeCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -582,7 +585,7 @@
 				FDCD79B4267B981700E79353 /* SegmentViewCell.xib in Resources */,
 				FDE61BED2677292600EABDD4 /* LaunchScreen.storyboard in Resources */,
 				FDE61C46267729CF00EABDD4 /* Assets.xcassets in Resources */,
-				FD7DACEB2677653200D05D24 /* HomeTableViewCell.xib in Resources */,
+				FD6BABC8267BD6F30041505A /* HomeCollectionViewCell.xib in Resources */,
 				FDC161B02677DADA00F36C8B /* City_List.json in Resources */,
 				FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */,
 				FDCD79A1267B767B00E79353 /* CityDetailCell.xib in Resources */,
@@ -618,10 +621,12 @@
 				FDF67AF8267B479800BB3E21 /* CityDetailCell.swift in Sources */,
 				FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */,
 				FD6BABBC267BCF1A0041505A /* SettingStorage.swift in Sources */,
+				FD6BABC4267BD6E80041505A /* HomeCollectionViewCell.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
 				FDCD79A5267B810A00E79353 /* StringExtension.swift in Sources */,
 				FD131D2A2679C815009E9F74 /* UIViewControllerExtension.swift in Sources */,
+				FD6BABC0267BD61E0041505A /* CollectionCellRegisterable.swift in Sources */,
 				FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */,
 				FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */,
 				FDF0F170267A3C5D001A4BDA /* HomeAPIFetcher.swift in Sources */,
@@ -633,7 +638,6 @@
 				FDF67AE7267B3EF200BB3E21 /* CityDetailViewController.swift in Sources */,
 				FD5DA43626789FF800A87AFE /* GeoLocationFetcher.swift in Sources */,
 				FDF0F171267A3C5D001A4BDA /* HomeStorageFetcher.swift in Sources */,
-				FD7DACE72677652100D05D24 /* HomeTableViewCell.swift in Sources */,
 				FDE024422678AE350005BFFB /* CityListFetcher.swift in Sources */,
 				FD7DAC7926772D3F00D05D24 /* HomeViewController.swift in Sources */,
 				FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */,

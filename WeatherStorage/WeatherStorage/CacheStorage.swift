@@ -7,50 +7,31 @@
 
 import Foundation
 
-class CacheValue: ExpirableValue {
-    var value: Data
-    var expiryDate: Date?
+class CacheValue {
+    var value: Any
     
-    init(value: Data, expiryDate: Date? = nil) {
+    init(value: Any) {
         self.value = value
-        self.expiryDate = expiryDate
     }
 }
 
 class CacheStorage: NSObject, StoreDataInterface {
     lazy var store: NSCache<NSString, CacheValue> = {
         let store = NSCache<NSString, CacheValue>()
-        store.delegate = self
+        //store.delegate = self
         return store
     }()
     
     func getValue<T: Codable>(for key: String, of type: T.Type) -> T? {
-        do {
-            guard let cacheValue = store.object(forKey: NSString(string: key)) else {
-                return nil
-            }
-            if cacheValue.isExpired {
-                removeValue(for: key)
-                return nil
-            }
-            return try JSONDecoder().decode(T.self, from: cacheValue.value)
-        } catch {
-            Logger.log(object: "Failed to decode saved data with error: \(error)")
+        guard let cacheValue = store.object(forKey: NSString(string: key)) else {
             return nil
         }
+        return cacheValue.value as? T
     }
     
     func saveValue<T: Codable>(_ value: T, key: String, expiryDate: Date?) {
-        do {
-            let encodedValue = try JSONEncoder().encode(value)
-            let cacheValue = CacheValue(value: encodedValue, expiryDate: expiryDate)
-            store.setObject(cacheValue, forKey: NSString(string: key))
-            
-            let storeV = store.object(forKey: NSString(string: key))
-            print("saved \(storeV!.value)")
-        } catch {
-            Logger.log(object: "Failed to save encoded data with error: \(error)")
-        }
+        let cacheValue = CacheValue(value: value)
+        store.setObject(cacheValue, forKey: NSString(string: key))
     }
     
     func removeValue(for key: String) {

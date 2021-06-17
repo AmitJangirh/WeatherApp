@@ -1,8 +1,8 @@
 //
-//  HomeTableViewCell.swift
+//  HomeCollectionViewCell.swift
 //  WeatherApp
 //
-//  Created by Amit Jangirh on 14/06/21.
+//  Created by Amit Jangirh on 18/06/21.
 //
 
 import Foundation
@@ -15,10 +15,16 @@ struct HomeTableViewCellViewModel {
     var iconName: String?
 }
 
-class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
+class HomeCollectionViewCell: UICollectionViewCell, CollectionCellRegisterable {
     typealias CellData = HomeTableViewCellViewModel
-
+    
     // MARK: - IBOutlet
+    @IBOutlet private var baseView: UIView! {
+        didSet {
+            self.baseView.backgroundColor = Theme.Color.disableGreyColor
+            self.baseView.layer.cornerRadius = 10
+        }
+    }
     @IBOutlet private var cityNameLabel: UILabel! {
         didSet {
             self.cityNameLabel.font = Theme.Font.boldLargeFont32
@@ -40,10 +46,29 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         }
     }
     @IBOutlet private var weatherIconImageView: UIImageView!
-  
+    @IBOutlet private var checkMarkLabel: UILabel! {
+        didSet {
+            self.checkMarkLabel.font = Theme.Font.mediumFont22
+            self.checkMarkLabel.textColor = Theme.Color.greyColor
+        }
+    }
+    
+    // MARK: - Vars
+    var indexPath: IndexPath!
+    
+    override var isSelected: Bool {
+        set {
+            checkMarkLabel.text = newValue ? "✓" : ""
+            super.isSelected = newValue
+        }
+        get {
+            return super.isSelected
+        }
+    }
     
     // MARK: - Configure
-    func configure(with data: HomeTableViewCellViewModel) {
+    func configure(with data: CellData, for indexPath: IndexPath) {
+        self.indexPath = indexPath
         self.tempLabel.text = data.temperature.appendTemperatureUnit(unit: .fahrenheit)
         self.cityNameLabel.text = data.cityName
         self.descriptionLabel.text = data.decription

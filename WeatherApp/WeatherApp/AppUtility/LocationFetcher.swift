@@ -10,6 +10,7 @@ import MapKit
 
 protocol LocationFetchable {
     func fetchLocation(completion: @escaping (Coordinates?, Error?) -> Void)
+    func stopLocationFetching()
 }
 
 class LocationFetcher: NSObject, LocationFetchable, CLLocationManagerDelegate {
@@ -18,11 +19,15 @@ class LocationFetcher: NSObject, LocationFetchable, CLLocationManagerDelegate {
     
     func fetchLocation(completion: @escaping (Coordinates?, Error?) -> Void) {
         self.completion = completion
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.locationManager.delegate = self;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
-        }
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestLocation()
+    }
+    
+    func stopLocationFetching() {
+        self.locationManager.delegate = nil
+        self.locationManager.stopUpdatingHeading()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

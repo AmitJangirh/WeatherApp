@@ -37,6 +37,7 @@ class HomeViewModel {
     // Data Array
     private var storeWeatherArray = [CityWeatherStoreData]()
     private var apiWeatherArray = [WeatherData]()
+    var selectedIndexPaths = [IndexPath: Bool]()
     var haveContent: Bool {
         return storeWeatherArray.count > 0
     }

@@ -36,3 +36,9 @@ class TableViewCellMirror: MirrorObject {
     }
 }
 
+class CollectionViewCellMirror: MirrorObject {
+    init(cell: UICollectionViewCell) {
+        super.init(reflecting: cell)
+    }
+}
+

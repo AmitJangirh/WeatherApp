@@ -124,6 +124,10 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     private func setEditing(isEditing: Bool) {
+        if !isEditing {
+            // Resetting selected objects
+            viewModel.selectedIndexPaths.removeAll()
+        }
         self.collectionView.allowsMultipleSelection = isEditing
         let rightBarButtonItem = isEditing ? deleteBarItem : settingBarItem
         self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
@@ -138,10 +142,14 @@ class HomeViewController: UIViewController, StoryboardGettable {
     }
     
     @objc func deleteIconDidPress() {
-        guard let selectedIndexPath = collectionView.indexPathsForSelectedItems else {
+        let selectedIndexPaths = viewModel.selectedIndexPaths.map { (arg0) -> IndexPath in
+            let (key, _) = arg0
+            return key
+        }
+        guard selectedIndexPaths.count > 0 else {
             return
         }
-        viewModel.deleteItems(at: selectedIndexPath) { [weak self] in
+        viewModel.deleteItems(at: selectedIndexPaths) { [weak self] in
             self?.refreshData()
         }
     }
@@ -186,6 +194,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if viewModel.isEditing {
+            viewModel.selectedIndexPaths[indexPath] = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
         } else {
             navigationToDetailPage(for: indexPath)
@@ -193,6 +202,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        viewModel.selectedIndexPaths.removeValue(forKey: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }

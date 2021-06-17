@@ -47,12 +47,22 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     // MARK: - Vars
     var viewModel = AddCityViewModel()
     weak var delegate: AddCityViewControllerDelegate?
+    var dropPinPlacemark: MKPlacemark? = nil
     
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         fetchUserLocation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.stopFetching()
+    }
+    
+    deinit {
+        self.mapView.delegate = nil
     }
     
     private func setup() {
@@ -85,15 +95,17 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     
     private func fetchUserLocation() {
         // Fetch location
-        viewModel.fetchLocation { [weak self] (cityData) in
-            DispatchQueue.main.async {
-                self?.viewModel.selectedCity = cityData
-                self?.loadMap(with: cityData?.latitude ?? 0,
-                              lon: cityData?.longitude ?? 0)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.viewModel.fetchLocation { [weak self] (cityData) in
+                DispatchQueue.main.async {  [weak self] in
+                    self?.viewModel.selectedCity = cityData
+                    self?.loadMap(with: cityData?.latitude ?? 0,
+                                  lon: cityData?.longitude ?? 0)
+                }
             }
         }
     }
-    
+     
     @objc func searchIconDidPress() {
         let searchVC = SearchCityViewController.getVC()
         searchVC.delegate = self
@@ -104,14 +116,24 @@ class AddCityViewController: UIViewController, StoryboardGettable {
     private func loadMap(with lat: Double, lon: Double) {
         // Set region
         let coordinates2D = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-        let region = MKCoordinateRegion(center: coordinates2D, span: span)
-        mapView.setRegion(region, animated: true)
         // Add Anotation
+        let placeMark = MKPlacemark(coordinate: coordinates2D)
+        dropPin(in: placeMark, coordinate: coordinates2D)
+    }
+    
+    private func dropPin(in placemark:MKPlacemark, coordinate: CLLocationCoordinate2D) {
+        // cache pin
+        self.dropPinPlacemark = placemark
+        // clear exising pins
+        mapView.removeAnnotations(mapView.annotations)
         let pinAnnotaion = MKPointAnnotation()
         pinAnnotaion.title = "Current Location"
-        pinAnnotaion.coordinate = coordinates2D
+        pinAnnotaion.coordinate = coordinate
         mapView.addAnnotation(pinAnnotaion)
+        // Zoom
+        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: false)
     }
     
     @IBAction private func didConfirmLocation() {

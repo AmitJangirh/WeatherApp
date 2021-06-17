@@ -35,7 +35,7 @@ class AddCityViewModel {
     
     private func fetchGeoLocation(coord: Coordinates, completion: @escaping (AddCityData?) -> Void) {
         geoLocationFetcher.fetchGeoLocation(lat: coord.latitude,
-                                            lon: coord.longitude) { (geoLocation, error) in
+                                            lon: coord.longitude) { [weak self] (geoLocation, error) in
             if let latitude = geoLocation?.latitude,
                let longitude = geoLocation?.longitude {
                 let addcity = AddCity(cityName: geoLocation?.cityName ?? "",
@@ -44,7 +44,7 @@ class AddCityViewModel {
                                       longitude: longitude,
                                       state: geoLocation?.state ?? "",
                                       country: geoLocation?.country ?? "")
-                self.fetchMatchingCity(for: addcity, completion: completion)
+                self?.fetchMatchingCity(for: addcity, completion: completion)
                 return
             }
             completion(nil)
@@ -62,5 +62,9 @@ class AddCityViewModel {
             }
             completion(city)
         }
+    }
+    
+    func stopFetching() {
+        self.locationFetcher.stopLocationFetching()
     }
 }

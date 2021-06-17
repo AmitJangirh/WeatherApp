@@ -14,6 +14,6 @@ struct MockStorageFetcher: HomeStorageFetchable {
 
 extension CityWeatherStoreData {
     static var data0: [CityWeatherStoreData] {
-        [CityWeatherStoreData(cityId: 123, cityName: "Ateli", temperature: "32")]
+        [CityWeatherStoreData(cityId: 123, latitude: -12, longitude: 1234, state: "Mah", country: "Ind", cityName: "Ateli")]
     }
 }

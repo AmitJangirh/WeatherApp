@@ -66,6 +66,11 @@ class HomeCollectionViewCell: UICollectionViewCell, CollectionCellRegisterable {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.isSelected = false
+    }
+    
     // MARK: - Configure
     func configure(with data: CellData, for indexPath: IndexPath) {
         self.indexPath = indexPath

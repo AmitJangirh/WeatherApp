@@ -41,7 +41,7 @@ public protocol WeatherAPIInterface {
     /// - Parameters:
     ///   - icon: Icon name : Weather.icon
     ///   - completion: Data object
-    func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void)
+    func getImageForIcon(icon: String, completion: @escaping (Data?) -> Void)
 }
 
 /// Globar getter to get the Interface instance. By which one have access to all the APIs

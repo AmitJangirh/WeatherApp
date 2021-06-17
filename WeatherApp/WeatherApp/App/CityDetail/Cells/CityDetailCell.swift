@@ -1,31 +1,17 @@
 //
-//  HomeTableViewCell.swift
+//  CityDetailCell.swift
 //  WeatherApp
 //
-//  Created by Amit Jangirh on 14/06/21.
+//  Created by Amit Jangirh on 17/06/21.
 //
 
 import Foundation
 import UIKit
 
-struct HomeTableViewCellViewModel {
-    var temperature: String
-    var cityName: String
-    var decription: String
-    var iconName: String?
-}
-
-class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
+class CityDetailCell: UITableViewCell, TableCellAdaptable {
     typealias CellData = HomeTableViewCellViewModel
 
     // MARK: - IBOutlet
-    @IBOutlet private var cityNameLabel: UILabel! {
-        didSet {
-            self.cityNameLabel.font = Theme.Font.boldLargeFont32
-            self.cityNameLabel.textColor = Theme.Color.greyColor
-            self.cityNameLabel.numberOfLines = 0
-        }
-    }
     @IBOutlet private var tempLabel: UILabel! {
         didSet {
             self.tempLabel.font = Theme.Font.mediumFont18
@@ -40,12 +26,14 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         }
     }
     @IBOutlet private var weatherIconImageView: UIImageView!
+    @IBOutlet private var maxTemperature: UILabel!
+    @IBOutlet private var minTemperature: UILabel!
+    @IBOutlet private var windDetail: UILabel!
   
     
     // MARK: - Configure
     func configure(with data: HomeTableViewCellViewModel) {
         self.tempLabel.text = data.temperature
-        self.cityNameLabel.text = data.cityName
         self.descriptionLabel.text = data.decription
         self.setIconImage(with: data)
     }
@@ -57,7 +45,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
         }
         UIImage.getImage(icon: icon) { [weak self] (iconImage) in
             DispatchQueue.main.async {
-                self?.weatherIconImageView.image = iconImage
+                self?.weatherIconImageView?.image = iconImage
             }
         }
     }

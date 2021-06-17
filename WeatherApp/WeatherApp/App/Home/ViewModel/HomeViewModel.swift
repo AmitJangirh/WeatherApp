@@ -63,10 +63,21 @@ class HomeViewModel {
         return storeWeatherArray.count
     }
     
-    subscript(indexPath: IndexPath) -> HomeTableViewCellViewModel {
-        let storeData = self.storeWeatherArray[indexPath.row]
+    subscript(storeData indexPath: IndexPath) -> CityWeatherStoreData {
+        return self.storeWeatherArray[indexPath.row]
+    }
+    
+    subscript(cellViewModel indexPath: IndexPath) -> HomeTableViewCellViewModel {
+        let storeData = self[storeData: indexPath]
         let apiData = mappingAPIData(for: storeData)
         return HomeTableViewCellViewModel(storeData: storeData, apiData: apiData)
+    }
+    
+    subscript(apiData indexPath: IndexPath) -> WeatherData? {
+        let storeData = self[storeData: indexPath]
+        return self.apiWeatherArray.first { (weatherData) -> Bool in
+            return areEqual(storeData: storeData, apiData: weatherData)
+        }
     }
     
     private func mappingAPIData(for storeData: CityWeatherStoreData) -> WeatherData? {

@@ -164,7 +164,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuZ-5k-LFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="120"/>
+            <point key="canvasLocation" x="1714" y="13"/>
+        </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="pHl-TJ-oru">
+            <objects>
+                <viewController storyboardIdentifier="CityDetailViewController" id="A7a-7f-dvw" customClass="CityDetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zjE-CX-I7G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jaa-YC-v44">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="A7a-7f-dvw" id="agA-ZW-3R3"/>
+                                    <outlet property="delegate" destination="A7a-7f-dvw" id="W7S-z0-1fg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EJ3-eC-TOy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jaa-YC-v44" firstAttribute="leading" secondItem="EJ3-eC-TOy" secondAttribute="leading" id="D2t-qX-i3x"/>
+                            <constraint firstItem="jaa-YC-v44" firstAttribute="trailing" secondItem="EJ3-eC-TOy" secondAttribute="trailing" id="P5O-eX-o5j"/>
+                            <constraint firstAttribute="bottom" secondItem="jaa-YC-v44" secondAttribute="bottom" id="jjr-5k-7A4"/>
+                            <constraint firstItem="jaa-YC-v44" firstAttribute="top" secondItem="EJ3-eC-TOy" secondAttribute="top" id="ydN-Mw-jKN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="jaa-YC-v44" id="aft-ma-GTk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mmk-zE-04b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2427.536231884058" y="12.723214285714285"/>
         </scene>
     </scenes>
     <resources>

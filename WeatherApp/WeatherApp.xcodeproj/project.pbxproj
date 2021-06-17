@@ -44,6 +44,9 @@
 		FDF0F170267A3C5D001A4BDA /* HomeAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F16E267A3C5D001A4BDA /* HomeAPIFetcher.swift */; };
 		FDF0F171267A3C5D001A4BDA /* HomeStorageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F16F267A3C5D001A4BDA /* HomeStorageFetcher.swift */; };
 		FDF0F175267A51BF001A4BDA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */; };
+		FDF67AE7267B3EF200BB3E21 /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF67AE6267B3EF200BB3E21 /* CityDetailViewController.swift */; };
+		FDF67AEB267B3F2800BB3E21 /* CityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF67AEA267B3F2800BB3E21 /* CityDetailViewModel.swift */; };
+		FDF67AF8267B479800BB3E21 /* CityDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF67AF7267B479800BB3E21 /* CityDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,9 @@
 		FDF0F16E267A3C5D001A4BDA /* HomeAPIFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAPIFetcher.swift; sourceTree = "<group>"; };
 		FDF0F16F267A3C5D001A4BDA /* HomeStorageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStorageFetcher.swift; sourceTree = "<group>"; };
 		FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		FDF67AE6267B3EF200BB3E21 /* CityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
+		FDF67AEA267B3F2800BB3E21 /* CityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewModel.swift; sourceTree = "<group>"; };
+		FDF67AF7267B479800BB3E21 /* CityDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 				FD7DAC7526772D3F00D05D24 /* Home */,
 				FDF0F161267A3582001A4BDA /* Search */,
 				FDE73F452677D30900692CE7 /* AddCity */,
+				FDF67AEE267B3F3F00BB3E21 /* CityDetail */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -358,19 +365,19 @@
 		FDF0F161267A3582001A4BDA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				FDF0F164267A359F001A4BDA /* VieModel */,
+				FDF0F164267A359F001A4BDA /* ViewModel */,
 				FDF0F167267A35A8001A4BDA /* ViewController */,
 			);
 			path = Search;
 			sourceTree = "<group>";
 		};
-		FDF0F164267A359F001A4BDA /* VieModel */ = {
+		FDF0F164267A359F001A4BDA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				FDC161AB2677DA8700F36C8B /* SearchViewModel.swift */,
 				FDE024412678AE350005BFFB /* CityListFetcher.swift */,
 			);
-			path = VieModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FDF0F167267A35A8001A4BDA /* ViewController */ = {
@@ -379,6 +386,40 @@
 				FDC161A72677D83400F36C8B /* SearchCityViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FDF67AEE267B3F3F00BB3E21 /* CityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FDF67AF1267B3F4B00BB3E21 /* ViewController */,
+				FDF67AFB267B479C00BB3E21 /* Cells */,
+				FDF67AF4267B3F5600BB3E21 /* ViewModel */,
+			);
+			path = CityDetail;
+			sourceTree = "<group>";
+		};
+		FDF67AF1267B3F4B00BB3E21 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FDF67AE6267B3EF200BB3E21 /* CityDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FDF67AF4267B3F5600BB3E21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FDF67AEA267B3F2800BB3E21 /* CityDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FDF67AFB267B479C00BB3E21 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FDF67AF7267B479800BB3E21 /* CityDetailCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +558,7 @@
 				FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */,
 				FD7DAC8326772FB300D05D24 /* TableCellRegisterable.swift in Sources */,
 				FDF0F175267A51BF001A4BDA /* UIImageExtension.swift in Sources */,
+				FDF67AF8267B479800BB3E21 /* CityDetailCell.swift in Sources */,
 				FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
@@ -528,6 +570,7 @@
 				FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */,
 				FDE73F1526779D8B00692CE7 /* Logger.swift in Sources */,
 				FDE73F422677D30400692CE7 /* AddCityViewController.swift in Sources */,
+				FDF67AE7267B3EF200BB3E21 /* CityDetailViewController.swift in Sources */,
 				FD5DA43626789FF800A87AFE /* GeoLocationFetcher.swift in Sources */,
 				FDF0F171267A3C5D001A4BDA /* HomeStorageFetcher.swift in Sources */,
 				FD7DACE72677652100D05D24 /* HomeTableViewCell.swift in Sources */,
@@ -535,6 +578,7 @@
 				FD7DAC7926772D3F00D05D24 /* HomeViewController.swift in Sources */,
 				FD7DAC8426772FB300D05D24 /* Theme.swift in Sources */,
 				FDE73F502677D33400692CE7 /* AddCityViewModel.swift in Sources */,
+				FDF67AEB267B3F2800BB3E21 /* CityDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

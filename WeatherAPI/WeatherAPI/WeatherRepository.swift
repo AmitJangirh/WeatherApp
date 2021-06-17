@@ -81,23 +81,23 @@ class WeatherRepository {
         }
     }
     
-    static func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void) {
+    static func getImageForIcon(icon: String, completion: @escaping (Data?) -> Void) {
         // Sample URl: http://openweathermap.org/img/wn/10d@2x.png
         let imageURL = Configuration.current.imageBaseURL + "\(icon)@2x.png"
         if let imageData = cacheStorage.getValue(for: imageURL, of: Data.self) {
-            completion(.success(imageData))
+            completion(imageData)
             return
         }
         guard let url = URL(string: imageURL) else {
-            completion(.failure(WeatherAPIError.invalidObject))
+            completion(nil)
             return
         }
         if let data = try? Data(contentsOf: url) {
             cacheStorage.saveValue(data, key: imageURL)
-            completion(.success(data))
+            completion(data)
             return
         }
-        completion(.failure(.invalidObject))
+        completion(nil)
     }
 }
 

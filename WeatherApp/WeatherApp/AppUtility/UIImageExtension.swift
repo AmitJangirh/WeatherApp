@@ -10,14 +10,13 @@ import UIKit
 import WeatherAPI
 
 extension UIImage {
-    static func getImage(icon: String, completion: @escaping (UIImage?) -> Void) {
-        weatherAPI.getImageForIcon(icon: icon) { (result: Result<Data, WeatherAPIError>) in
-            switch result {
-            case .success(let data):
-                completion(UIImage(data: data))
-            case .failure:
-                completion(nil)
+    static func getImage(icon: String, completion: @escaping (UIImage) -> Void) {
+        weatherAPI.getImageForIcon(icon: icon) { (imageData) in
+            if let data = imageData, let image = UIImage(data: data) {
+                completion(image)
+                return
             }
+            completion(UIImage.getImage(imageName: .defaultImage)!)
         }
     }
 }

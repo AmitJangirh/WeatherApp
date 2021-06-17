@@ -41,7 +41,7 @@ struct WeatherAPI: WeatherAPIInterface {
         WeatherRepository.getWeatherData(with: zipCode, countryCode: countryCode, completion: completion)
     }
     
-    func getImageForIcon(icon: String, completion: @escaping (Result<Data, WeatherAPIError>) -> Void) {
+    func getImageForIcon(icon: String, completion: @escaping (Data?) -> Void) {
         WeatherRepository.getImageForIcon(icon: icon, completion: completion)
     }
 }

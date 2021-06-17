@@ -11,14 +11,14 @@ import UIKit
 class CityDetailViewController: UIViewController, StoryboardGettable {
     // MARK: - Constant
     struct Constant {
-        static let rowHeight: CGFloat = 120
+        static let rowHeight: CGFloat = 350
     }
     
     // MARK: - IBOutlets
     @IBOutlet private var tableView: UITableView!
     
     // MARK: - Vars
-    var viewModel = CityDetailViewModel(data: NoData())
+    var viewModel = CityDetailViewModel()
     
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -39,6 +39,7 @@ class CityDetailViewController: UIViewController, StoryboardGettable {
     private func setupTableView() {
         tableView.allowsMultipleSelection = false
         tableView.estimatedRowHeight = Constant.rowHeight
+        tableView.separatorStyle = .none
         tableView.rowHeight = Constant.rowHeight
         tableView.tableFooterView = UIView()
         CityDetailCell.register(for: tableView)
@@ -58,12 +59,14 @@ extension CityDetailViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = CityDetailCell.dequeueCell(for: tableView, indexPath: indexPath) else {
             return UITableViewCell()
         }
-//        let storeData = viewModel[indexPath]
-//        cell.configure(with: storeData)
+        guard let detailData = viewModel[detailCellDataAt: indexPath] else {
+            return UITableViewCell()
+        }
+        cell.configure(with: detailData)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return Constant.rowHeight
     }
 }

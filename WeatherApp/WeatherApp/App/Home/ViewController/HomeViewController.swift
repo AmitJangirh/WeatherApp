@@ -150,7 +150,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let apiData = viewModel[apiData: indexPath] else {
             return
         }
-        let selectedCity = SelectedCityData(weatherData: apiData)
+        let selectedCity = CityDetailData(weatherData: apiData)
         let cityDetailVC = CityDetailViewController.getVC()
         cityDetailVC.viewModel = CityDetailViewModel(data: selectedCity)
         self.navigationController?.show(cityDetailVC, sender: self)
@@ -167,37 +167,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             handleDelete(for: indexPath)
         }
-    }
-}
-
-struct SelectedCityData: CityDetailData {
-    var temperature: Double
-    var minTemperature: Double
-    var maxTemperature: Double
-    var pressure: Double
-    var humidity: Int
-    var visibility: Int
-    var weatherDescription: String
-    var weatherIcon: String
-    var windSpeed: Double
-    var windDegree: Int
-    var cloudiness: Int
-    var cityId: Int
-    var cityName: String
-    
-    init(weatherData: WeatherData) {
-        self.temperature = weatherData.main?.temp ?? 0
-        self.minTemperature = weatherData.main?.minTemperature ?? 0
-        self.maxTemperature = weatherData.main?.maxTemperature ?? 0
-        self.pressure = weatherData.main?.pressure ?? 0
-        self.humidity = weatherData.main?.humidity ?? 0
-        self.visibility = weatherData.visibility ?? 0
-        self.weatherDescription = weatherData.weather?.description ?? ""
-        self.weatherIcon = weatherData.weather?.first?.icon ?? ""
-        self.windSpeed = weatherData.wind?.speed ?? 0
-        self.windDegree = weatherData.wind?.degree ?? 0
-        self.cloudiness = weatherData.clouds?.all ?? 0
-        self.cityId = weatherData.id ?? 0
-        self.cityName = weatherData.name ?? ""
     }
 }

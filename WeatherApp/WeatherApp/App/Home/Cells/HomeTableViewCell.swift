@@ -44,7 +44,7 @@ class HomeTableViewCell: UITableViewCell, TableCellAdaptable {
     
     // MARK: - Configure
     func configure(with data: HomeTableViewCellViewModel) {
-        self.tempLabel.text = data.temperature
+        self.tempLabel.text = data.temperature.appendTemperatureUnit(unit: .fahrenheit)
         self.cityNameLabel.text = data.cityName
         self.descriptionLabel.text = data.decription
         self.setIconImage(with: data)

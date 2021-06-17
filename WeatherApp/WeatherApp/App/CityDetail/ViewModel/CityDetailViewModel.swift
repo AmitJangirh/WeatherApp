@@ -6,60 +6,98 @@
 //
 
 import Foundation
+import WeatherAPI
 
-protocol CityDetailData {
-    var temperature: Double { get }
-    var minTemperature: Double { get }
-    var maxTemperature: Double { get }
-    var pressure: Double { get }
-    var humidity: Int { get }
-    var visibility: Int { get }
-    var weatherDescription: String { get }
-    var weatherIcon: String { get }
-    var windSpeed: Double { get }
-    var windDegree: Int { get }
-    var cloudiness: Int { get }
-    var cityId: Int { get }
-    var cityName: String { get }
-}
-
-struct NoData: CityDetailData {
-    var temperature: Double = 0
-    var minTemperature: Double = 0
-    var maxTemperature: Double = 0
-    var pressure: Double = 0
-    var humidity: Int = 0
-    var visibility: Int = 0
-    var weatherDescription: String = ""
-    var weatherIcon: String = ""
-    var windSpeed: Double = 0
-    var windDegree: Int = 0
-    var cloudiness: Int = 0
-    var cityId: Int = 0
-    var cityName: String = ""
+struct CityDetailData {
+    var temperature: Double
+    var feelsLikeTemp: Double
+    var minTemperature: Double
+    var maxTemperature: Double
+    var pressure: Double
+    var humidity: Int
+    var visibility: Int
+    var weatherDescription: String
+    var weatherIcon: String
+    var windSpeed: Double
+    var windDegree: Int
+    var cloudiness: Int
+    var cityId: Int
+    var cityName: String
+    
+    init(weatherData: WeatherData) {
+        self.temperature = weatherData.main?.temp ?? 0
+        self.feelsLikeTemp = weatherData.main?.feelsLike ?? 0
+        self.minTemperature = weatherData.main?.minTemperature ?? 0
+        self.maxTemperature = weatherData.main?.maxTemperature ?? 0
+        self.pressure = weatherData.main?.pressure ?? 0
+        self.humidity = weatherData.main?.humidity ?? 0
+        self.visibility = weatherData.visibility ?? 0
+        self.weatherDescription = weatherData.weather?.first?.description ?? ""
+        self.weatherIcon = weatherData.weather?.first?.icon ?? ""
+        self.windSpeed = weatherData.wind?.speed ?? 0
+        self.windDegree = weatherData.wind?.degree ?? 0
+        self.cloudiness = weatherData.clouds?.all ?? 0
+        self.cityId = weatherData.id ?? 0
+        self.cityName = weatherData.name ?? ""
+    }
 }
 
 class CityDetailViewModel {
-    let data: CityDetailData
+    let data: CityDetailData?
+    var sections = [SectionProtocol]()
+    // getter
     var title: String {
-        return ""
+        return data?.cityName ?? ""
+    }
+    
+    init() {
+        self.data = nil
     }
     
     init(data: CityDetailData) {
         self.data = data
+        self.generateSections()
+    }
+    
+    private func generateSections() {
+        guard let data = self.self.data else {
+            return
+        }
+        let detailCell = DetailCell(data: CityDetailCellViewModel(data: data))
+        let detailSection = DetailSection(cells: [detailCell])
+        self.sections = [detailSection]
     }
     
     func sectionCount() -> Int {
-        return 1
+        return self.sections.count
     }
     
     func rowsCount(for section: Int) -> Int {
-        return 0
+        return self.sections[section].cells.count
     }
     
-//    subscript(indexPath: IndexPath) -> HomeTableViewCellViewModel {
-//        let storeData = self.storeWeatherArray[indexPath.row]
-//        let apiData = mappingAPIData(for: storeData)
-//        return HomeTableViewCellViewModel(storeData: storeData, apiData: apiData)
-//    }
+    subscript(detailCellDataAt indexPath: IndexPath) -> CityDetailCellViewModel? {
+        if let detailCell = self.sections[indexPath.section].cells[indexPath.row] as? DetailCell {
+            return detailCell.data
+        }
+        return nil
+    }
+}
+
+protocol SectionProtocol {
+    var cells: [CellProtocol] { get }
+}
+
+protocol CellProtocol {
+}
+
+struct DetailSection: SectionProtocol {
+    var cells: [CellProtocol]
+}
+
+struct DetailCell: CellProtocol {
+    var data: CityDetailCellViewModel
+    init(data: CityDetailCellViewModel) {
+        self.data = data
+    }
 }

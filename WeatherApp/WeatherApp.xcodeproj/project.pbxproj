@@ -27,6 +27,8 @@
 		FDC161B02677DADA00F36C8B /* City_List.json in Resources */ = {isa = PBXBuildFile; fileRef = FDC161AF2677DADA00F36C8B /* City_List.json */; };
 		FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161B62677EADE00F36C8B /* FileParser.swift */; };
 		FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC161D226786C5300F36C8B /* LocationFetcher.swift */; };
+		FDCD79A1267B767B00E79353 /* CityDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDCD79A0267B767B00E79353 /* CityDetailCell.xib */; };
+		FDCD79A5267B810A00E79353 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCD79A4267B810A00E79353 /* StringExtension.swift */; };
 		FDE024422678AE350005BFFB /* CityListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE024412678AE350005BFFB /* CityListFetcher.swift */; };
 		FDE61BE12677292500EABDD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE02677292500EABDD4 /* AppDelegate.swift */; };
 		FDE61BE32677292500EABDD4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE61BE22677292500EABDD4 /* SceneDelegate.swift */; };
@@ -101,6 +103,8 @@
 		FDC161AF2677DADA00F36C8B /* City_List.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = City_List.json; sourceTree = "<group>"; };
 		FDC161B62677EADE00F36C8B /* FileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
 		FDC161D226786C5300F36C8B /* LocationFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		FDCD79A0267B767B00E79353 /* CityDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetailCell.xib; sourceTree = "<group>"; };
+		FDCD79A4267B810A00E79353 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		FDE024412678AE350005BFFB /* CityListFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListFetcher.swift; sourceTree = "<group>"; };
 		FDE61BDD2677292500EABDD4 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE61BE02677292500EABDD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				FD5DA43526789FF800A87AFE /* GeoLocationFetcher.swift */,
 				FD131D292679C815009E9F74 /* UIViewControllerExtension.swift */,
 				FDF0F174267A51BF001A4BDA /* UIImageExtension.swift */,
+				FDCD79A4267B810A00E79353 /* StringExtension.swift */,
 			);
 			path = AppUtility;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				FDF67AF7267B479800BB3E21 /* CityDetailCell.swift */,
+				FDCD79A0267B767B00E79353 /* CityDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -531,6 +537,7 @@
 				FD7DACEB2677653200D05D24 /* HomeTableViewCell.xib in Resources */,
 				FDC161B02677DADA00F36C8B /* City_List.json in Resources */,
 				FDE61BE82677292500EABDD4 /* Main.storyboard in Resources */,
+				FDCD79A1267B767B00E79353 /* CityDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +569,7 @@
 				FDC161AC2677DA8700F36C8B /* SearchViewModel.swift in Sources */,
 				FD7DAC8226772FB300D05D24 /* StoryboardGettable.swift in Sources */,
 				FD7DAC7826772D3F00D05D24 /* HomeViewModel.swift in Sources */,
+				FDCD79A5267B810A00E79353 /* StringExtension.swift in Sources */,
 				FD131D2A2679C815009E9F74 /* UIViewControllerExtension.swift in Sources */,
 				FDC161B72677EADE00F36C8B /* FileParser.swift in Sources */,
 				FDC161D326786C5300F36C8B /* LocationFetcher.swift in Sources */,
